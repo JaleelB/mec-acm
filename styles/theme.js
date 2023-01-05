@@ -31,7 +31,8 @@ const fontSizes = {
 const breakpoints = {
     xlDesktop: '125em',
     lgDesktop: '90em',
-    smDesktop: '64en',
+    mdDesktop: '75em',
+    smDesktop: '64em',
     tablet:'48em',
     phone: '27em'
 }
@@ -44,6 +45,7 @@ const colors = {
     textLight: "#FFFFFF",
     colorRed: "#FF0F0F",
     colorDark: "#141517",
+    colorWhite: "#FFFFFF",
     lightGrey: "rgba(28, 29, 32, 0.2)"
 }
 
