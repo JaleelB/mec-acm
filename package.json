@@ -13,6 +13,8 @@
     "@chakra-ui/react": "^2.4.6",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@fontsource/questrial": "^4.5.10",
+    "@fontsource/raleway": "^4.5.11",
     "@next/font": "13.1.1",
     "axios": "^1.2.2",
     "eslint": "8.31.0",

@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
-import { Box, Button, Flex ,Stack, Text, useDisclosure, useTheme } from '@chakra-ui/react';
+import { Box, Button, Flex ,Grid,GridItem,Stack, Text, useDisclosure, useTheme } from '@chakra-ui/react';
 import Link from 'next/link'
 import { useRouter } from 'next/router';
 import useScrollDirection from '../hooks/useScrollDirection';
 import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons'
-import { Dropdown, LinkItem } from '../components';
+import { Dropdown, HoverTransformText, LinkItem } from '../components';
 
 
 
@@ -33,34 +33,32 @@ const Nav = () => {
 
     }, [scroll.y, scroll.lastY])  
 
-    // console.log(useTheme())
+    console.log(useTheme())
 
     return (
         <Box 
             as="header" ref={showHeader} 
-            display="flex" alignItems={"center"}
-            justifyContent="center" height="100" 
-            width="100vw"  
+            width="100vw"  height="100" 
             mx="auto" position="fixed"
+            fontSize={{base: 'sm', lgDesktop: '1.4256410256410258vw'}}
         >
             <Flex 
-                as="nav" 
                 width="90%" maxWidth="2000px" height="100%"
                 align="center" justify="space-between"
-                alignSelf="center" 
+                alignSelf="center" mx="auto"
             >
 
                 <Link href='/' className='logo'>
                     <Button
                         role="group"
-                        py={7} px={6}
+                        py={{base: 6, tablet:7}} px={6}
                         bg="rgba(227, 229, 227, 0.75)"
                         backdropFilter="auto" backdropBlur="8px"
                         display="flex" alignContent="center" justifyContent="center"
                         color="textDark"
                         borderRadius="100px"
                         textTransform="uppercase"
-                        fontSize={{ base: 'sm', '1700px': 'bodyMd', xlDesktop: 'bodyLg' }}
+                        zIndex="120"
                         _hover={{
                             background: "colorBlue",
                             color: "textLight"
@@ -97,7 +95,10 @@ const Nav = () => {
                 </Link>
 
                 
-                <Flex alignItems={"center"} gap={8}>
+                <Flex 
+                    alignItems={"center"} gap={8} 
+                    className='nav-right-align' 
+                >
                     <Stack 
                         direction="row" spacing={8}
                         bg="rgba(227, 229, 227, 0.75)"
@@ -108,6 +109,7 @@ const Nav = () => {
                     >
 
                         <Box
+                            as="nav" 
                             onClick={onToggle}
                             fontSize={{ base: '14px', phone:'sm', '106.25em': 'bodyMd', xlDesktop: 'bodyLg' }}
                             cursor="pointer"
@@ -130,7 +132,7 @@ const Nav = () => {
                                     Club
                                 </Text>
 
-                                { isOpen ?  <ChevronUpIcon  alignSelf="center" /> : <ChevronDownIcon nalignSelf="center"/> }
+                                { isOpen ?  <ChevronUpIcon  alignSelf="center" /> : <ChevronDownIcon alignSelf="center"/> }
 
                             </Flex> 
 
@@ -145,7 +147,7 @@ const Nav = () => {
                             navLinks.map((link, index) => {
                                 return (
                                     <LinkItem
-                                        key={index}
+                                        key={`${link} ${index}`}
                                         url={`/${link.toLowerCase()}`}
                                         path={router.pathname}
                                         text={link}
@@ -164,7 +166,7 @@ const Nav = () => {
                             textTransform="uppercase"
                             borderRadius="100px"
                             display={{base: 'none', lgDesktop: 'flex'}}
-                            fontSize={{ base: 'sm', '1700px': 'bodyMd', xlDesktop: 'bodyLg' }}
+                            fontSize={{ base: 'sm !important', '1700px': 'bodyMd', xlDesktop: 'bodyLg' }}
                             _hover={{
                                 background: "colorBlue"
                             }}
@@ -172,8 +174,70 @@ const Nav = () => {
                             Join the club
                         </Button>
                     </Link>
+
+
+                    <Button
+                        onClick={onToggle}
+                        py={{base: 6, tablet:7}} px={{base:6, tablet:8}}
+                        bg="bgDark"
+                        color="textLight"
+                        textTransform="uppercase"
+                        borderRadius="100px"
+                        display={{base: 'flex', lgDesktop: 'none'}}
+                        fontSize={{ base: 'sm !important', '1700px': 'bodyMd', xlDesktop: 'bodyLg' }}
+                        zIndex="120"
+                        _hover={{ background: "bgDark" }}
+                    >
+                        <HoverTransformText text1={"menu"} text2={"close"} isOpen={isOpen}/>
+                    </Button>
                 </Flex>
             </Flex>
+
+            <Flex 
+                as="nav" className='mobile-nav'
+                zIndex="100" w="100%" height="100vh"
+                display={{base: 'flex', lgDesktop: 'none'}}
+                boxShadow="outline" position="fixed"
+                left="0%" top="0%" bottom="0%"
+                py="100px" px="wrapLg"
+                bg="bgWhite"
+                backdropFilter="auto" backdropBlur="8px"
+                fontSize={{base:'51px', sm: '4.5em', md:'5.5em', lg:'5.5em'}}
+                transition="opacity ease-in 300ms"
+                opacity={isOpen ? 1 : 0}
+                align="center" justify="center"
+                overflowY="auto"
+                pointerEvents={isOpen ? 'auto' : 'none'}
+            >
+              
+                <Grid 
+                    templateColumns={{base:"1fr", lg:"1fr 1fr"}}
+                    autoRows="max-content" gap={{base:8, sm:12, md:16}}
+                >
+                    {
+                        ['About Us', 'Code of Conduct', ...navLinks].map((link, index) => {
+                            return (
+                                <Box 
+                                    key={link}
+                                    display="flex" alignItems="center"
+                                    fontWeight="500" gap={2}
+                                >   
+                                    <Text 
+                                        fontSize={{base:"xs", md: "md", lg:"lg"}} 
+                                        transform="rotate(-90deg)"
+                                        letterSpacing="2px"
+                                    >
+                                        0{index + 1}
+                                    </Text>
+                                    <Link href={`/${link.toLowerCase()}`}> {link !== 'Code of Conduct' ? link : 'Code'} </Link>
+                                </Box>                                    
+                            )
+                        })
+                    }
+                </Grid>
+            
+            </Flex>
+
         </Box>
     )
 }
