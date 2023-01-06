@@ -1,7 +1,7 @@
 import React from 'react'
 import { Fade, Flex } from "@chakra-ui/react"
 import LinkItem from "./LinkItem"
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 const Dropdown = ({sublinks, isOpen}) => {
 
@@ -12,13 +12,13 @@ const Dropdown = ({sublinks, isOpen}) => {
             in={isOpen}
         >
             <Flex
-                bg="rgba(253, 255, 253, 0.75)" 
-                backdropFilter="auto" backdropBlur="8px"
+                bg="rgba(227, 229, 227, 0.75)"
+                backdropFilter="auto" backdropBlur="8px" 
                 borderRadius="6px" p={3}
                 pos="absolute" marginTop="30px"
-                maxW="433px" minW="200px"
+                maxW="250px" width="15vw"
                 align="start" direction="column"
-                border='2px' borderColor='bgDark'
+                border='1px' borderColor='bgDark'
             >
                 {
                     sublinks.map((sublink, index)=>{

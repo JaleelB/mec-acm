@@ -1,7 +1,7 @@
-import React, { useCallback } from 'react';
-import { Box, Button, Flex ,Grid,GridItem,Stack, Text, useDisclosure, useTheme } from '@chakra-ui/react';
+import React, { useCallback, useEffect } from 'react';
+import { Box, Button, Flex ,Grid,Stack, Text, useDisclosure, useTheme } from '@chakra-ui/react';
 import Link from 'next/link'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import useScrollDirection from '../hooks/useScrollDirection';
 import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons'
 import { Dropdown, HoverTransformText, LinkItem } from '../components';
@@ -16,6 +16,12 @@ const Nav = () => {
     ];
     const scroll = useScrollDirection();
     const router = useRouter();
+
+    useEffect(() => {
+        isOpen
+          ? (document.body.style.overflow = 'hidden')
+          : (document.body.style.overflow = 'auto');
+    }, [isOpen]);
     
 
 
@@ -40,12 +46,13 @@ const Nav = () => {
             as="header" ref={showHeader} 
             width="100vw"  height="100" 
             mx="auto" position="fixed"
-            fontSize={{base: 'sm', lgDesktop: '1.4256410256410258vw'}}
+            fontSize={{base: 'sm', lg: '1.4256410256410258vw', lgDesktop:'bodySm', xlDesktop:'bodyMd', xxlDesktop:'calc(21px, .5vw, bodyLg)'}}                                                                              
         >
             <Flex 
                 width="90%" maxWidth="2000px" height="100%"
                 align="center" justify="space-between"
                 alignSelf="center" mx="auto"
+                padding="min(5.906vw, 80px) 0"
             >
 
                 <Link href='/' className='logo'>
@@ -58,7 +65,9 @@ const Nav = () => {
                         color="textDark"
                         borderRadius="100px"
                         textTransform="uppercase"
-                        zIndex="120"
+                        zIndex="1200"
+                        fontWeight="600"
+                        fontSize="inherit"
                         _hover={{
                             background: "colorBlue",
                             color: "textLight"
@@ -119,13 +128,13 @@ const Nav = () => {
                                 background: "colorWhite",
                                 boxShadow: "rgb(25 26 25 / 5%) 0px 0px 8px",
                                 borderRadius: "6px",
-                                transition: 'cubic-bezier(0.4, 0, 1, 1)',
                                 fontWeight: 500
                             }}
                         >
                             <Flex direction="row" gap='1' p="0.25rem .5rem" align="center">
                                 <Text 
-                                    textTransform="uppercase"
+                                    as="div"
+                                    textTransform="capitalize"
                                     alignItems="center" justifyContent="center"
                                     fontSize={{ base: 'sm', '1700px': 'bodyMd', xlDesktop: 'bodyLg' }}
                                 >
@@ -137,7 +146,7 @@ const Nav = () => {
                             </Flex> 
 
                             <Dropdown
-                                sublinks={[['About Us', 'about-us'], ['Code of Conduct', 'code-of-conduct']]}
+                                sublinks={[['About Us', 'about'], ['Code of Conduct', 'code-of-conduct']]}
                                 isOpen={isOpen}
                             />
                         </Box>
@@ -160,18 +169,47 @@ const Nav = () => {
 
                     <Link href='/join' className='join-cta'>
                         <Button
+                            role="group"
                             py={7} px={8}
                             bg="bgDark"
                             color="textLight"
-                            textTransform="uppercase"
+                            textTransform="capitalize"
+                            fontWeight="400"
                             borderRadius="100px"
                             display={{base: 'none', lgDesktop: 'flex'}}
                             fontSize={{ base: 'sm !important', '1700px': 'bodyMd', xlDesktop: 'bodyLg' }}
+                            zIndex="120"
                             _hover={{
-                                background: "colorBlue"
+                                background: "colorBlue",
                             }}
                         >
-                            Join the club
+                            <Flex 
+                                justify="center" direction="column"
+                                overflow="hidden" height="20px"
+                            >
+                                <Text 
+                                    as="div" height="100%"
+                                    style={{transformStyle: "preserve-3d"}}
+                                    transition="transform 300ms ease" 
+                                    transform="translateY(50%)"
+                                    _groupHover={{      
+                                        transform: "translateY(-50%)"                                  
+                                    }}
+                                >
+                                    Join the club
+                                </Text>
+                                <Text 
+                                    as="div" height="100%"
+                                    style={{transformStyle: "preserve-3d"}}
+                                    transition="transform 300ms ease" 
+                                    transform="translateY(50%)"
+                                    _groupHover={{
+                                        transform:"translateY(-50%)"
+                                    }}
+                                >
+                                   let us begin
+                                </Text>
+                            </Flex>
                         </Button>
                     </Link>
 
@@ -183,9 +221,10 @@ const Nav = () => {
                         color="textLight"
                         textTransform="uppercase"
                         borderRadius="100px"
+                        fontWeight="400"
                         display={{base: 'flex', lgDesktop: 'none'}}
                         fontSize={{ base: 'sm !important', '1700px': 'bodyMd', xlDesktop: 'bodyLg' }}
-                        zIndex="120"
+                        zIndex="1200"
                         _hover={{ background: "bgDark" }}
                     >
                         <HoverTransformText text1={"menu"} text2={"close"} isOpen={isOpen}/>
@@ -195,12 +234,12 @@ const Nav = () => {
 
             <Flex 
                 as="nav" className='mobile-nav'
-                zIndex="100" w="100%" height="100vh"
+                zIndex="1000" w="100%" height="100vh"
                 display={{base: 'flex', lgDesktop: 'none'}}
                 boxShadow="outline" position="fixed"
                 left="0%" top="0%" bottom="0%"
                 py="100px" px="wrapLg"
-                bg="bgWhite"
+                bg="bgLight"
                 backdropFilter="auto" backdropBlur="8px"
                 fontSize={{base:'51px', sm: '4.5em', md:'5.5em', lg:'5.5em'}}
                 transition="opacity ease-in 300ms"
@@ -212,7 +251,7 @@ const Nav = () => {
               
                 <Grid 
                     templateColumns={{base:"1fr", lg:"1fr 1fr"}}
-                    autoRows="max-content" gap={{base:8, sm:12, md:16}}
+                    autoRows="max-content" gap={{base:8, sm:12, md:16, lg: 20}}
                 >
                     {
                         ['About Us', 'Code of Conduct', ...navLinks].map((link, index) => {
@@ -222,7 +261,8 @@ const Nav = () => {
                                     display="flex" alignItems="center"
                                     fontWeight="500" gap={2}
                                 >   
-                                    <Text 
+                                    <Text
+                                        as="div"
                                         fontSize={{base:"xs", md: "md", lg:"lg"}} 
                                         transform="rotate(-90deg)"
                                         letterSpacing="2px"
