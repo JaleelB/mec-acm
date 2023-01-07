@@ -131,6 +131,7 @@ const styles = {
       },
       a: { textDecoration: 'none' },
       main: { width: '100%', minHeight: '100vh' },
+      section: {width: '100%'},
       h2:{ fontWeight: '400' }
     }),
 }

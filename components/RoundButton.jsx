@@ -7,10 +7,10 @@ const RoundButton = ({path, state, text}) => {
         as="a"
         role="group"
         href={`/${path}`}
-        width="clamp(144px, 12vw, 230px)" height="clamp(144px, 12vw, 230px)"
+        width="clamp(144px, 12vw, 210px)" height="clamp(144px, 12vw, 210px)"
         bg={state ? "colorBlue" : "bgDark"} color="textLight"
         textTransform="capitalize" fontWeight="400"
-        fontSize={{base: 'md', lgDesktop: '20px', xlDesktop: 'xl', xxlDesktop: '27px'}}
+        fontSize={{base: 'md', lgDesktop: '20px', xlDesktop: 'xl'}}
         transition="transform ease-in 300ms"
         justify="center" align="center"
         borderRadius="100%"

@@ -5,8 +5,8 @@ import Layout from '../layout/layout'
 const Home = () => {
   return (
       <Layout>
-          <Heading>hi</Heading>
-          <Heading>you</Heading>
+          {/* <Heading pt={{base: 'wrap2Lg', md:'calc(var(--chakra-space-wrapLg) * 2)', mdDesktop:'wrap2Lg', xlDesktop: 'wrap2XXLg'}}>hi</Heading> */}
+          <Heading pt={{base: 'wrap2Lg', md:'calc(var(--chakra-space-wrapLg) * 2)', mdDesktop: 'wrapXXLg'}}>hi</Heading>
       </Layout>
     
   )
