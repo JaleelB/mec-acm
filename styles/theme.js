@@ -113,26 +113,31 @@ const components = {
 
 const styles = {
     global: (props) => ({
-      html:{
-        lineHeight: 1.15
-      },
-      body: {
-        fontFamily: fonts.body,
-        color: colors.textDark,
-        bg: colors.bgLight,
-        lineHeight: '160%',
-        minHeight: '100%',
-        width: '100%',
-      },
-      '*, *::before, &::after': {
-        margin: 0,
-        padding: 0,
-        boxSizing: 'border-box'
-      },
-      a: { textDecoration: 'none' },
-      main: { width: '100%', minHeight: '100vh' },
-      section: {width: '100%'},
-      h2:{ fontWeight: '400' }
+        html:{
+            lineHeight: 1.15
+        },
+        body: {
+            fontFamily: fonts.body,
+            color: colors.textDark,
+            bg: colors.bgLight,
+            lineHeight: '160%',
+            minHeight: '100%',
+            width: '100%',
+            fontSize: 'clamp(16px, 1.2vw, 25px)'
+        },
+        '*, *::before, &::after': {
+            margin: 0,
+            padding: 0,
+            boxSizing: 'border-box'
+        },
+        a: { textDecoration: 'none' },
+        main: { 
+            width: '100%', minHeight: '100vh'
+        },
+        section: {width: '100%'},
+        h1:{ fontWeight: '300 !important'},
+        h2:{ fontWeight: '400'},
+        //   'figure > *': {width: '100%'}
     }),
 }
 

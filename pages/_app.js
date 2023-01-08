@@ -3,7 +3,6 @@ import customTheme from '../styles/theme'
 
 export default function MyApp({ Component, pageProps }) {
   return (
-    // <ChakraProvider theme={customTheme}>
     <ChakraProvider theme={customTheme}>
       <Component {...pageProps} />
     </ChakraProvider>

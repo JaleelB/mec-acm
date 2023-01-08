@@ -1,4 +1,4 @@
-import { Box, Button, Flex, scaleFadeConfig, Text } from '@chakra-ui/react';
+import { Flex, Text } from '@chakra-ui/react';
 import React from 'react';
 
 const RoundButton = ({path, state, text}) => {

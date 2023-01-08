@@ -44,15 +44,17 @@ const Nav = () => {
     return (
         <Box 
             as="header" ref={showHeader} 
-            width="100vw"  height="100" 
+            width="100vw" 
             mx="auto" position="fixed"
             fontSize={{base: 'sm', lg: '1.4256410256410258vw', lgDesktop:'bodySm', xlDesktop:'bodyMd', xxlDesktop:'calc(21px, .5vw, bodyLg)'}}                                                                              
         >
             <Flex 
-                width="90%" maxWidth="2000px" height="100%"
+                height="100%"
                 align="center" justify="space-between"
                 alignSelf="center" mx="auto"
-                padding="min(5.906vw, 80px) 0"
+                py="min(4.906vw,50px)"
+                // px={{base: 'wrapSm', lgTablet:'wrap2Md', lgDesktop:'wrap2Lg', xlDesktop: 'wrap2XXLg'}}
+                px={{base: 'wrapSm', lgTablet:'wrap2Md'}}
             >
 
                 <Link href='/' className='logo'>
@@ -108,17 +110,16 @@ const Nav = () => {
                     alignItems={"center"} gap={8} 
                     className='nav-right-align' 
                 >
-                    <Stack 
+                    <Stack as="nav"
                         direction="row" spacing={8}
                         bg="rgba(227, 229, 227, 0.75)"
                         backdropFilter="auto" backdropBlur="8px" 
                         borderRadius="100px"
                         display={{base: 'none', lgDesktop: 'flex'}}
-                        py={3} px={8}
+                        py={2} px={8}
                     >
 
                         <Box
-                            as="nav" 
                             onClick={onToggle}
                             fontSize={{ base: '14px', phone:'sm', '106.25em': 'bodyMd', xlDesktop: 'bodyLg' }}
                             cursor="pointer"
