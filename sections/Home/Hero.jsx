@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Heading, Text } from '@chakra-ui/react'
+import { AspectRatio, Box, Heading, Text } from '@chakra-ui/react'
 import Image from 'next/image'
 import banner from '../../assets/h-banner.jpg'
 import SecondaryButton from '../../components/SecondaryButton'
@@ -17,7 +17,7 @@ const Hero = () => {
             >
                 <Title>Expand your knowledge and skills with us</Title>
 
-                <Text maxW="732px" mx="auto" pb={{base: 8, sm: 16, xlDesktop:"32"}}>
+                <Text maxW="732px" mx="auto" py={{base: 8, sm: 16, xlDesktop:"32"}}>
                     Dive into the world of computer science and discover endless possibilities for innovation and 
                     problem-solving. Join our community and explore the world of computer science with us.
                 </Text>
@@ -34,15 +34,14 @@ const Hero = () => {
             as="figure"
             mx="auto" w="100%"
             px={{base: 0, lgDesktop: "wrapLg"}}
-            height={{base: '450px', sm:'450px',tablet:'52.22vw',largeTablet:'47.5vw', mdDesktop: '45vw'}} 
-            // 
+            height={{base: '450px', sm:'450px',tablet:'52.22vw',largeTablet:'47.5vw', mdDesktop: '45vw'}}
         >
             <Image
                 src={banner}
                 alt="hero banner"
                 style={{
                     inlineSize: '100%', objectFit: 'cover',
-                    height:'100%', aspectRatio:'3/2'
+                    height:'clamp(350px, 53vw, 1600px)',  aspectRatio:'4/2' 
                 }}
             />
         </Box>
