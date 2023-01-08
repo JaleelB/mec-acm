@@ -12,7 +12,7 @@ const Dropdown = ({sublinks, isOpen}) => {
             in={isOpen}
         >
             <Flex
-                bg="rgba(227, 229, 227, 0.75)"
+                bg="textLight"
                 backdropFilter="auto" backdropBlur="8px" 
                 borderRadius="6px" p={3}
                 pos="absolute" marginTop="30px"

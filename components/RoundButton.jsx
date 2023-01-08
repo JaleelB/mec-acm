@@ -10,7 +10,7 @@ const RoundButton = ({path, state, text}) => {
         width="clamp(144px, 12vw, 210px)" height="clamp(144px, 12vw, 210px)"
         bg={state ? "colorBlue" : "bgDark"} color="textLight"
         textTransform="capitalize" fontWeight="400"
-        fontSize={{base: 'md', lgDesktop: '20px', xlDesktop: 'xl'}}
+        // fontSize={{base: 'md', lgDesktop: '20px', xlDesktop: 'xl'}}
         transition="transform ease-in 300ms"
         justify="center" align="center"
         borderRadius="100%"
@@ -28,8 +28,9 @@ const RoundButton = ({path, state, text}) => {
               style={{transformStyle: "preserve-3d"}}
               transition="transform 300ms ease" 
               transform="translateY(50%)"
+              display="flex" justifyContent="center" alignItems="center"
               _groupHover={{      
-                transform: "translateY(-50%)"                                  
+                transform: "translateY(-100%)"                                  
               }}
             >
               {text}
@@ -38,9 +39,10 @@ const RoundButton = ({path, state, text}) => {
               as="div" height="100%"
               style={{transformStyle: "preserve-3d"}}
               transition="transform 300ms ease" 
+              // display="flex" justifyContent="center" alignItems="center"
               transform="translateY(50%)"
               _groupHover={{
-                transform:"translateY(-50%)"
+                transform:"translateY(-100%)"
               }}
             >
               {text}

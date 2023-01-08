@@ -1,4 +1,4 @@
-import { extendTheme, defineStyleConfig } from '@chakra-ui/react'
+import { extendTheme } from '@chakra-ui/react'
 
 
 const spacing = {
@@ -135,7 +135,7 @@ const styles = {
             width: '100%', minHeight: '100vh'
         },
         section: {width: '100%'},
-        'h1, h2':{ fontWeight: '300 !important'}
+        'h1, h2, h3':{ fontWeight: '300 !important'}
         //   'figure > *': {width: '100%'}
     }),
 }
