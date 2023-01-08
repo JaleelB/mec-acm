@@ -135,8 +135,7 @@ const styles = {
             width: '100%', minHeight: '100vh'
         },
         section: {width: '100%'},
-        h1:{ fontWeight: '300 !important'},
-        h2:{ fontWeight: '400'},
+        'h1, h2':{ fontWeight: '300 !important'}
         //   'figure > *': {width: '100%'}
     }),
 }
