@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from '../layout/layout'
-import { About, Hero, Services } from '../sections/Home'
+import { About, Hero, Join, Passion, Services } from '../sections/Home'
 
 const Home = () => {
   return (
@@ -8,6 +8,8 @@ const Home = () => {
           <Hero/>
           <About/>
           <Services/>
+          <Passion/>
+          <Join/>
       </Layout>
     
   )
