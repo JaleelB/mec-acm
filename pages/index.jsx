@@ -1,12 +1,15 @@
-import { Heading } from '@chakra-ui/react'
 import React from 'react'
 import Layout from '../layout/layout'
+import { About, Hero, Join, Passion, Services } from '../sections/Home'
 
 const Home = () => {
   return (
       <Layout>
-          {/* <Heading pt={{base: 'wrap2Lg', md:'calc(var(--chakra-space-wrapLg) * 2)', mdDesktop:'wrap2Lg', xlDesktop: 'wrap2XXLg'}}>hi</Heading> */}
-          <Heading pt={{base: 'wrap2Lg', md:'calc(var(--chakra-space-wrapLg) * 2)', mdDesktop: 'wrapXXLg'}}>hi</Heading>
+          <Hero/>
+          <About/>
+          <Services/>
+          <Passion/>
+          <Join/>
       </Layout>
     
   )

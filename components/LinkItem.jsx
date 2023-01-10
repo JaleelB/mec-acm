@@ -9,6 +9,7 @@ const LinkItem = ({url, path, text}) => {
     return (
         <LinkBox
             p="0.25rem .5rem" 
+            height="min-content"
             bg={active ? "colorWhite" : "transparent"}
             boxShadow={`active ? "rgb(25 26 25 / 5%) 0px 0px 8px" : 'none'`}
             textTransform="capitalize"

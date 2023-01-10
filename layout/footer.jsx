@@ -11,7 +11,8 @@ const Footer = () => {
         pt="clamp(5rem, 21vh, 12rem)"
         pb="clamp(2rem, 8vw, 4rem)"
         // px={{base: 'wrapSm', lgTablet:'wrap2Md', mdDesktop:'wrap2Lg', xlDesktop: 'wrap2XXLg'}}/
-        px={{base: 'wrap2Md', md:'calc(var(--chakra-space-wrapLg) * 2)', mdDesktop:'wrap2Lg', xlDesktop: 'wrap2XXLg'}}
+        // px={{base: 'wrapMd', sm:'', md:'calc(var(--chakra-space-wrapLg) * 2)', mdDesktop:'wrap2Lg', xlDesktop: 'wrap2XXLg'}}
+        px={{base: 'wrapSm', lgTablet:'wrap2Md', lgDesktop:'wrap2Lg', xlDesktop: 'wrap2XXLg'}}
     >
         <Container 
             as="section" maxW="2000px"
