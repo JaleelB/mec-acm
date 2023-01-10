@@ -1,36 +1,26 @@
 import React from 'react'
-import { Box, Text } from '@chakra-ui/react'
+import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import Image from 'next/image'
 import banner from '../../assets/h-banner.jpg'
 import SecondaryButton from '../../components/SecondaryButton'
-import { Title } from '../../components'
+import { AnimatedText } from '../../components'
+import { motion } from "framer-motion"
 
 
 const Hero = () => {
   return (
+ 
     <Box as="section">
-            <Box
-                pt={{base: 'calc(15vw + 120px)', sm: 'calc(10vw + 100px)',  md: 'calc(9vw + 100px)'}}
-                pb={{base: 'calc(5vw + 25px)', md: 'calc(4vw + 50px)', lgDesktop:'calc(3vw + 10px)'}}
+         
+            <Flex
+                pt={{base: '53px', smTablet: '60px', md: '7.729vw', lgTablet:'6.238vw', mdDesktop: '5.9vw'}}
+                h={{base: '70vh', smTablet:"80vh"}}
+                minHeight={{base: "38vh", smTablet:'350px'}}
                 px={{base: 'wrapSm', lgTablet:'wrap2Md', lgDesktop:'wrap2Lg', xlDesktop: 'wrap2XXLg'}}
-                textAlign="center" 
+                align="center" 
             >
-                <Box maxW="1400px" width= '100%' mx="auto">
-                    <Title>Expand your knowledge and skills with us</Title>
-                </Box>
-                
-
-                <Text maxW="732px" mx="auto" py={{base: 8, sm: 16, xlDesktop:"32"}}>
-                    Dive into the world of computer science and discover endless possibilities for innovation and 
-                    problem-solving. Join our community and explore the world of computer science with us.
-                </Text>
-
-                {/* <Box 
-                    mx="auto" w="max-content"
-                >
-                    <SecondaryButton path="join" text="Join the Club"/>
-                </Box> */}
-            </Box>
+                <AnimatedText>Expand your knowledge and skills in computer science with us</AnimatedText>
+            </Flex>
         
 
         <Box
@@ -39,15 +29,26 @@ const Hero = () => {
             px={{base: 0, lgDesktop: "wrapLg"}}
             height={{base: '450px', sm:'450px',tablet:'52.22vw',largeTablet:'47.5vw', mdDesktop: '45vw'}}
         >
-            <Image
-                src={banner}
-                alt="hero banner"
-                style={{
-                    inlineSize: '100%', objectFit: 'cover',
-                    height:'clamp(350px, 53vw, 1600px)',  aspectRatio:'4/2' 
+            <motion.div
+                initial={{ opacity: 0, y: 90 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  type: "spring",
+                  duration: .9,
+                  delay: 1.2,
                 }}
-            />
+            >
+                <Image
+                    src={banner}
+                    alt="hero banner"
+                    style={{
+                        inlineSize: '100%', objectFit: 'cover',
+                        height:'clamp(350px, 53vw, 1600px)',  aspectRatio:'4/2' 
+                    }}
+                />
+            </motion.div>
         </Box>
+       
     </Box>
   )
 }

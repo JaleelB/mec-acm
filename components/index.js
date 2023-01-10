@@ -7,5 +7,6 @@ export {default as SectionHeader} from './SectionHeader'
 export {default as Title} from './Title' 
 export {default as BodyParagraph} from './BodyParagraph' 
 export {default as CardLink} from './CardLink' 
+export {default as AnimatedText} from './AnimateText' 
 
 

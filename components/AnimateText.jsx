@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, isValidMotionProp } from "framer-motion";
-import { Heading, chakra, shouldForwardProp } from "@chakra-ui/react";
+import { chakra, shouldForwardProp } from "@chakra-ui/react";
 import Title from "./Title";
 
 const ChakraBox = chakra(motion.div, {
