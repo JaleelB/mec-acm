@@ -9,5 +9,5 @@ export {default as BodyParagraph} from './BodyParagraph'
 export {default as CardLink} from './CardLink' 
 export {default as AnimatedText} from './AnimateText' 
 export {default as Logo} from './Logo' 
-
+export {default as SecondaryButton} from './SecondaryButton' 
 

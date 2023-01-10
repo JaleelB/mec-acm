@@ -1,6 +1,7 @@
 import { Box, Flex, keyframes, Text } from '@chakra-ui/react'
 import React from 'react'
-import { Title } from  '../components'
+import { Title, SecondaryButton } from  '../components'
+import { Nav } from  '../layout'
 
 const animation = keyframes`
    0% {
@@ -16,14 +17,20 @@ const scrollingAnimation = `${animation} linear infinite 12s`
 const Error = () => {
   return (
 
-    <Flex
+    <Box
         w="100vw" h="100vh" 
-        bgColor="bgDark" color="textLight"
-        align="center" justify="center"
+        bgColor="bgDark" 
         overflow="hidden"
     >
-        <Box>
+        
+        <Nav/>
 
+        <Flex
+            align="center" justify="center"
+            direction="column" w="100%"
+            h="100%"
+        >
+              
             <Box 
                 w="100%" overflow="hidden"
             >
@@ -31,6 +38,7 @@ const Error = () => {
                     w="max-content" gap={{base: "5vw", smTablet: "3.2vw"}}
                     display="flex" whiteSpace="nowrap" 
                     animation={scrollingAnimation} overflow="hidden"
+                    color="textLight"
                 >
                     <Box display="flex" gap={{base: "5vw", smTablet: "3.2vw"}}>
                         {
@@ -56,7 +64,7 @@ const Error = () => {
                                         key={cardCount}
                                         w="max-content" 
                                     >
-                                        <Title>404 page</Title>   
+                                        <Title>404 page</Title>
                                     </Flex>
                                 )
                             })
@@ -65,9 +73,18 @@ const Error = () => {
                 </Box>
             </Box>
 
-            <Text>We’re sorry. the page you’re looking for doesn’t exist</Text>
-        </Box>
-    </Flex>
+            <Text 
+                mt={{base: "7vw", sm:'5vw', smTablet: "3.2vw"}}
+                textAlign="center" color="textLight"
+            >
+                We’re sorry. The page you’re looking for doesn’t exist.
+            </Text>
+            
+            <Box mt={{base: "7vw", sm:'5vw', smTablet: "3.2vw"}}>
+                <SecondaryButton path="" text="go back home" state="hover"/>
+            </Box>
+        </Flex>
+    </Box>
   )
 }
 
