@@ -1,7 +1,7 @@
 import { Box, Flex, keyframes, Text } from '@chakra-ui/react'
 import React from 'react'
 import { Title, SecondaryButton } from  '../components'
-import { Nav } from  '../layout'
+import Nav from  '../layout/nav'
 
 const animation = keyframes`
    0% {
