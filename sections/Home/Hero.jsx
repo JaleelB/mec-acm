@@ -19,7 +19,12 @@ const Hero = () => {
                 px={{base: 'wrapSm', lgTablet:'wrap2Md', lgDesktop:'wrap2Lg', xlDesktop: 'wrap2XXLg'}}
                 align="center" 
             >
-                <AnimatedText>Expand your knowledge and skills in computer science with us</AnimatedText>
+                <Box
+                    mx="auto"
+                    w={{smTablet: '500px', lgTablet: '100%'}}
+                >
+                    <AnimatedText>Expand your knowledge and skills in computer science with us</AnimatedText>
+                </Box>
             </Flex>
         
 
