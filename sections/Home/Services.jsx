@@ -9,7 +9,7 @@ const Services = () => {
 
     return (
         <ResponsiveSection>
-            <SectionHeader text='things we do here :'/>
+            <SectionHeader>things we do here :</SectionHeader>
             <Stack 
                 as="ul" listStyleType="none" p={0}
             >

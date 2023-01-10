@@ -44,7 +44,7 @@ const Nav = () => {
     return (
         <Box 
             as="header" ref={showHeader} 
-            width="100vw" 
+            width="100vw" zIndex="1000"
             mx="auto" position="fixed"
             fontSize={{base: 'sm', lg: '1.4256410256410258vw', lgDesktop:'bodySm', xlDesktop:'bodyMd', xxlDesktop:'calc(21px, .5vw, bodyLg)'}}                                                                              
         >
@@ -115,6 +115,7 @@ const Nav = () => {
                         bg="rgba(227, 229, 227, 0.75)"
                         backdropFilter="auto" backdropBlur="8px" 
                         borderRadius="100px"
+                        zIndex="1000"
                         display={{base: 'none', lgDesktop: 'flex'}}
                         py={2} px={8}
                     >

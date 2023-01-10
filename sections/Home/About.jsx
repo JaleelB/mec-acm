@@ -6,9 +6,9 @@ import Subtitle from '../../components/Subtitle'
 const About = () => {
   return (
     <ResponsiveSection>
-        <SectionHeader text='about'/>
+        <SectionHeader>about</SectionHeader>
         <Subtitle>
-            We are more than just a coding club. A supportive 
+            We are more than just a coding club. We are a supportive 
             and engaging community for students to learn and grow
         </Subtitle>
         <Flex 
@@ -16,11 +16,11 @@ const About = () => {
             justify="space-between" mt={{base: '5rem', lgTablet:'7.5rem', lgDesktop:'wrap2Md'}}
         >
             <Flex
-                width={{lg:"40%", mdDesktop:'50%'}} justify={{mdDesktop:"center"}}
-                pl={{mdDesktop: 'calc(wrapLg * 2)', lgDesktop:'calc(wrapXLg * 2)', xxlDesktop:'calc(wrapLg * 2)'}}
+                width={{lg:"40%", mdDesktop:'50%'}} 
+                pl={{mdDesktop: 'calc(var(--chakra-space-wrapLg) * 2)', lgDesktop:'calc(var(--chakra-space-wrapXLg) * 2)', xxlDesktop:'calc(var(--chakra-space-wrapLg) * 2)'}}
                 mt={{base: '3.75rem', lgTablet:'0'}}
             >
-                <RoundButton path="about" text="about us"/>
+                <RoundButton path="about" text="read more"/>
             </Flex>
             
             <BodyParagraph>

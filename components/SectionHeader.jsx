@@ -1,7 +1,7 @@
 import { Text } from '@chakra-ui/react'
 import React from 'react'
 
-const SectionHeader = ({text}) => {
+const SectionHeader = ({children}) => {
   return (
     <Text 
       as="h2"
@@ -10,7 +10,7 @@ const SectionHeader = ({text}) => {
       fontSize="clamp(11px, 1.2vw, 25px)"
       pb="1.5rem"
     >
-      {text}
+      {children}
     </Text>
   )
 }

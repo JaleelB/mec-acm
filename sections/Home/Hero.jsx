@@ -1,5 +1,5 @@
 import React from 'react'
-import { AspectRatio, Box, Heading, Text } from '@chakra-ui/react'
+import { Box, Text } from '@chakra-ui/react'
 import Image from 'next/image'
 import banner from '../../assets/h-banner.jpg'
 import SecondaryButton from '../../components/SecondaryButton'
@@ -13,9 +13,12 @@ const Hero = () => {
                 pt={{base: 'calc(15vw + 120px)', sm: 'calc(10vw + 100px)',  md: 'calc(9vw + 100px)'}}
                 pb={{base: 'calc(5vw + 25px)', md: 'calc(4vw + 50px)', lgDesktop:'calc(3vw + 10px)'}}
                 px={{base: 'wrapSm', lgTablet:'wrap2Md', lgDesktop:'wrap2Lg', xlDesktop: 'wrap2XXLg'}}
-                textAlign="center"
+                textAlign="center" 
             >
-                <Title>Expand your knowledge and skills with us</Title>
+                <Box maxW="1400px" width= '100%' mx="auto">
+                    <Title>Expand your knowledge and skills with us</Title>
+                </Box>
+                
 
                 <Text maxW="732px" mx="auto" py={{base: 8, sm: 16, xlDesktop:"32"}}>
                     Dive into the world of computer science and discover endless possibilities for innovation and 
