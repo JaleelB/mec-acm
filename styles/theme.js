@@ -62,33 +62,6 @@ const colors = {
     colorLight: "rgba(255, 255, 255, 0.2)"
 }
 
-// const Container = defineStyleConfig({
-  
-//   baseStyle: {
-//     width: '100%',
-//     mx: 'auto',
-//     maxW: "2000px",
-//     pt:20
-//   },
-
-//   sizes: {
-//     base: {
-//       fontSize: 'md',
-//       px: spacing.space.wrap1Sm, 
-//     },
-//     md: {
-//         pt: 36,
-//         px: spacing.space.wrapMd, 
-//     },
-//     lg:{
-
-//     }
-//   },
-//   defaultProps: {
-//     size: 'md'
-//   },
-// })
-
 const components = {
     Heading:{
         lineHeight: "100%",
