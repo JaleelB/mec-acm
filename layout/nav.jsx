@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 import useScrollDirection from '../hooks/useScrollDirection';
 import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons'
-import { Dropdown, HoverTransformText, LinkItem } from '../components';
+import { Dropdown, HoverTransformText, LinkItem, Logo } from '../components';
 import { motion } from 'framer-motion';
 
 
@@ -66,55 +66,7 @@ const Nav = () => {
                     // px={{base: 'wrapSm', lgTablet:'wrap2Md', lgDesktop:'wrap2Lg', xlDesktop: 'wrap2XXLg'}}
                     px={{base: 'wrapSm', lgTablet:'wrap2Md'}}
                 >
-
-                    <Link href='/' className='logo'>
-                        <Button
-                            role="group"
-                            py={{base: 6, tablet:7}} px={6}
-                            bg="rgba(227, 229, 227, 0.75)"
-                            backdropFilter="auto" backdropBlur="8px"
-                            display="flex" alignContent="center" justifyContent="center"
-                            color="textDark"
-                            borderRadius="100px"
-                            textTransform="uppercase"
-                            zIndex="1200"
-                            fontWeight="600"
-                            fontSize="inherit"
-                            _hover={{
-                                background: "colorBlue",
-                                color: "textLight"
-                            }}
-                        >
-                            <Flex 
-                                justify="center" direction="column"
-                                overflow="hidden" height="20px"
-                            >
-                                <Text 
-                                    as="div" height="100%"
-                                    style={{transformStyle: "preserve-3d"}}
-                                    transition="transform 300ms ease" 
-                                    transform="translateY(50%)"
-                                    _groupHover={{      
-                                        transform: "translateY(-50%)"                                  
-                                    }}
-                                >
-                                    mec.acm
-                                </Text>
-                                <Text 
-                                    as="div" height="100%"
-                                    style={{transformStyle: "preserve-3d"}}
-                                    transition="transform 300ms ease" 
-                                    transform="translateY(50%)"
-                                    _groupHover={{
-                                        transform:"translateY(-50%)"
-                                    }}
-                                >
-                                    cs club
-                                </Text>
-                            </Flex>
-                        </Button>
-                    </Link>
-
+                    <Logo/>
                     
                     <Flex 
                         alignItems={"center"} gap={8} 
