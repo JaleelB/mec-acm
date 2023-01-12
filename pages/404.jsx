@@ -74,13 +74,13 @@ const Error = () => {
             </Box>
 
             <Text 
-                mt={{base: "7vw", sm:'5vw', smTablet: "3.2vw"}}
+                mt={{base: "7vw", sm:'5vw', smTablet: "3.2vw", xlDesktop: '1.5vw'}}
                 textAlign="center" color="textLight"
             >
                 We’re sorry. The page you’re looking for doesn’t exist.
             </Text>
             
-            <Box mt={{base: "7vw", sm:'5vw', smTablet: "3.2vw"}}>
+            <Box  mt={{base: "7vw", sm:'5vw', smTablet: "3.2vw", xlDesktop: '1.5vw'}}>
                 <SecondaryButton path="" text="go back home" state="hover"/>
             </Box>
         </Flex>

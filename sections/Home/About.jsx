@@ -9,7 +9,7 @@ const About = () => {
         <SectionHeader>about</SectionHeader>
         <Subtitle>
             We are more than just a coding club. We are a supportive 
-            and engaging community for students to learn and grow
+            and engaging community for students to learn and grow together.
         </Subtitle>
         <Flex 
             direction={{base:"column-reverse", lgTablet:"row"}}
