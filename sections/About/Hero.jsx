@@ -16,15 +16,15 @@ const Hero = () => {
                 passion for technology and problem-solving.
             </Title> 
         </Box>
-            <Box mt={{base: '3rem', lgTablet: '4rem', mdDesktop: '5rem'}}>
-                <BodyParagraph>
-                    The MEC ACM is a place where people can come together to build new skills and make friends. 
-                    Whether you're new to programming or just want to brush up on your  skills, this club will 
-                    help you learn new things that will make your life easier. We believe in creating a supportive
-                    community where everyone can learn from each other and grow their skills—whether it's through 
-                    sharing knowledge with other members in our meetings or collaborating on projects we've worked on together.
-                </BodyParagraph>
-            </Box>
+        <Box mt={{base: '3rem', lgTablet: '4rem', mdDesktop: '5rem'}}>
+            <BodyParagraph>
+                The MEC ACM is a place where people can come together to build new skills and make friends. 
+                Whether you're new to programming or just want to brush up on your  skills, this club will 
+                help you learn new things that will make your life easier. We believe in creating a supportive
+                community where everyone can learn from each other and grow their skills—whether it's through 
+                sharing knowledge with other members in our meetings or collaborating on projects we've worked on together.
+            </BodyParagraph>
+        </Box>
         
     </Box>
   )

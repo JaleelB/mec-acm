@@ -1,6 +1,6 @@
 import React from 'react'
 import { Layout } from '../layout'
-import { Banner, Hero, Mission } from '../sections/About'
+import { Banner, Hero, Mission, Principles } from '../sections/About'
 
 const About = () => {
   return (
@@ -8,6 +8,7 @@ const About = () => {
         <Hero/>
         <Banner/>
         <Mission/>
+        <Principles/>
     </Layout>
   )
 }

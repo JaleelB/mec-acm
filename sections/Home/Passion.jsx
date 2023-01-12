@@ -1,9 +1,10 @@
-import { Flex, Grid } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
 import React from 'react'
-import { BodyParagraph, CardLink, CardLinksGrid, ResponsiveSection, RoundButton, SectionHeader } from '../../components'
+import { BodyParagraph, CardLinksGrid, ResponsiveSection, RoundButton, SectionHeader } from '../../components'
 import Subtitle from '../../components/Subtitle'
 import events from '../../assets/eventw-card.jpg'
 import challenges from '../../assets/challenges-card.jpg'
+
 
 const Passion = () => {
   return (

@@ -6,8 +6,8 @@ const ResponsiveSection = ({children}) => {
     <Box 
         as="section"
         px={{base: 'wrapSm', lgTablet:'wrap2Md', lgDesktop:'wrap2Lg', xlDesktop: 'wrap2XXLg'}}
-        // py={{base: '115px', lgTablet: '16.5vw', lgDesktop: '15vw'}}
-        py={{base: '55px', smTablet: '115px', lgTablet: '16.5vw', lgDesktop: '15vw', xlDesktop: '9vw'}}
+        pt={{base: '55px', smTablet: '85px', lgTablet: '16.5vw', lgDesktop: '15vw', xlDesktop: '9vw'}}
+        pb={{base: '27px', smTablet: '42px', lgTablet: '8vw', lgDesktop: '6.5vw', xlDesktop: '4vw'}}
     >
       {children}
     </Box>

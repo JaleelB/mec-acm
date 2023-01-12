@@ -1,6 +1,8 @@
 import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import React from 'react'
-import { BodyParagraph, ResponsiveSection, SectionHeader, Subtitle } from '../../components'
+import { BodyParagraph, KnowMoreCTA, ResponsiveSection, SectionHeader, Subtitle } from '../../components'
+import events from '../../assets/eventw-card.jpg'
+import challenges from '../../assets/challenges-card.jpg'
 
 const Principles = () => {
 
@@ -36,20 +38,20 @@ const Principles = () => {
                                 direction={{base: "column", md: "row"}}
                                 justify={{base: "normal", md: "space-between"}}
                                 borderTop="1px" borderColor="colorDark" borderBottom={index === principles.length - 1 && '1px'}
-                                py={{base:'', smTablet: '2rem', mdDesktop: '3rem'}}
+                                py={{base:'1.5rem', smTablet: '2rem', mdDesktop: '3rem'}}
                             >
                                 <Box>
                                     <Text>Guidline 0{index + 1}</Text>
                                     <Heading
                                         as="h4" mt=".5rem"
                                         fontSize={{base: "36px", lgDesktop:"min(2.35vw, 50px)"}}
-                                        fontWeight="350"
+                                        fontWeight="300"
                                     >
                                         {principle.name}
                                     </Heading>
                                 </Box>
                                 <Box 
-                                    w={{base: '100%', lgTablet: '60%', lg:'65%'}}
+                                    w={{base: '100%', md: '50%', lgTablet: '60%', lg:'65%'}}
                                     maxW="1000px" mt={{base: '1rem'}}
                                 >
                                     <Text>
@@ -61,6 +63,15 @@ const Principles = () => {
                     })
                 }
             </Box>
+
+            <KnowMoreCTA
+                text1="team"
+                text2="resources" 
+                url1="team"
+                url2="resources"
+                image1={events} 
+                image2={challenges}
+            />
         </ResponsiveSection>
     )
 }

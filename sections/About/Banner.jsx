@@ -8,8 +8,7 @@ const Banner = () => {
     <Box
         as="section"
         pl={{base: 0, lgTablet:'wrap2Md', lgDesktop:'wrap2Lg', xlDesktop: 'wrap2XXLg'}}
-        // py={{base: '115px', lgTablet: '16.5vw', lgDesktop: '15vw'}}
-        py={{base: '55px', smTablet: '115px', lgTablet: '16.5vw', lgDesktop: '15vw', xlDesktop: '9vw'}}
+        pb={{base: '27px', smTablet: '42px', lgTablet: '8vw', lgDesktop: '6.5vw', xlDesktop: '4vw'}}
     >
       <Image
             src={banner}

@@ -11,4 +11,8 @@ export {default as AnimatedText} from './AnimateText'
 export {default as Logo} from './Logo' 
 export {default as SecondaryButton} from './SecondaryButton' 
 export {default as Subtitle} from './Subtitle' 
+export {default as CardLinksGrid} from './CardLinksGrid' 
+export {default as KnowMoreCTA} from './KnowMoreCTA' 
+
+
 
