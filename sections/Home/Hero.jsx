@@ -2,7 +2,6 @@ import React from 'react'
 import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import Image from 'next/image'
 import banner from '../../assets/h-banner.jpg'
-import SecondaryButton from '../../components/SecondaryButton'
 import { AnimatedText } from '../../components'
 import { motion } from "framer-motion"
 

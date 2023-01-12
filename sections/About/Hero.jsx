@@ -1,7 +1,6 @@
 import { Box } from '@chakra-ui/react'
 import React from 'react'
-import { BodyParagraph, ResponsiveSection, SectionHeader, Title } from '../../components'
-import Subtitle from '../../components/Subtitle'
+import { BodyParagraph, SectionHeader, Title } from '../../components'
 
 const Hero = () => {
   return (
@@ -26,8 +25,6 @@ const Hero = () => {
                     sharing knowledge with other members in our meetings or collaborating on projects we've worked on together.
                 </BodyParagraph>
             </Box>
-            
-       
         
     </Box>
   )
