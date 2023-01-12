@@ -1,6 +1,6 @@
 import { Flex, Grid } from '@chakra-ui/react'
 import React from 'react'
-import { BodyParagraph, CardLink, ResponsiveSection, RoundButton, SectionHeader } from '../../components'
+import { BodyParagraph, CardLink, CardLinksGrid, ResponsiveSection, RoundButton, SectionHeader } from '../../components'
 import Subtitle from '../../components/Subtitle'
 import events from '../../assets/eventw-card.jpg'
 import challenges from '../../assets/challenges-card.jpg'
@@ -32,24 +32,14 @@ const Passion = () => {
             </BodyParagraph>
         </Flex>
 
-        <Grid
-            gap={{base: 8, md: 0}} mx="auto" 
-            w={{base:'95%', sm:'90%', lg:'100%'}}
-            mt={{base: '5rem', lgTablet:'7.5rem', lgDesktop:'wrap2Md'}}
-            templateAreas={"card1 card2"}
-            templateColumns={{base: '1fr', md: "1fr 1fr"}}
-        >
-            <CardLink 
-                rotateDirection="left" text="events" 
-                zindex url="events" image={events} 
-                positionInGrid={1} area="card1"
-            />
-            <CardLink 
-                rotateDirection="right" text="challenges" 
-                url="challenges" image={challenges}
-                positionInGrid={2} area="card2"
-            />
-        </Grid>
+        <CardLinksGrid
+            text1="events"
+            text2="challenges" 
+            url1="events"
+            url2="challenges"
+            image1={events} 
+            image2={challenges}
+        />
     </ResponsiveSection>
   )
 }
