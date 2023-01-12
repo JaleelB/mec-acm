@@ -233,7 +233,15 @@ const Nav = () => {
                                         >
                                             0{index + 1}
                                         </Text>
-                                        <Link href={`/${link.toLowerCase()}`}> {link !== 'Code of Conduct' ? link : 'Code'} </Link>
+                                        <Link 
+                                            href={
+                                                link === 'About Us' ? '/about':
+                                                link === 'Code of Conduct' ? '/code-of-conduct':
+                                                `/${link.toLowerCase()}`
+                                            }
+                                        > 
+                                            {link === 'Code of Conduct' ? 'Code' : link} 
+                                        </Link>
                                     </Box>                                    
                                 )
                             })

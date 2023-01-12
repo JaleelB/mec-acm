@@ -32,6 +32,8 @@ const CardLink = ({image, text, rotateDirection, zindex, url, area}) => {
                         inlineSize: '100%', height: '100%', 
                         zIndex: '-1', aspectRatio:'1/1'
                     }}
+                    // width={100}
+                    // height={100}
                     alt="img"
                     src={image}
                 />
