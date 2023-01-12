@@ -5,10 +5,11 @@ import banner from '../../assets/h-banner.jpg'
 
 const Banner = () => {
   return (
-    <Box 
+    <Box
         as="section"
         pl={{base: 0, lgTablet:'wrap2Md', lgDesktop:'wrap2Lg', xlDesktop: 'wrap2XXLg'}}
-        py={{base: '55px', smTablet: '115px', lgTablet: '16.5vw', lgDesktop: '15vw'}}
+        // py={{base: '115px', lgTablet: '16.5vw', lgDesktop: '15vw'}}
+        py={{base: '55px', smTablet: '115px', lgTablet: '16.5vw', lgDesktop: '15vw', xlDesktop: '9vw'}}
     >
       <Image
             src={banner}

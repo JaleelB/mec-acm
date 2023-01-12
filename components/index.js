@@ -10,4 +10,5 @@ export {default as CardLink} from './CardLink'
 export {default as AnimatedText} from './AnimateText' 
 export {default as Logo} from './Logo' 
 export {default as SecondaryButton} from './SecondaryButton' 
+export {default as Subtitle} from './Subtitle' 
 
