@@ -4,7 +4,7 @@ import React from 'react'
 const BodyParagraph = ({children}) => {
   return (
     <Text
-        maxW={{base:'600px', lgTablet: '60%', xlDesktop: '50%' }}
+        maxW={{base:'600px', lgTablet: '75%', xlDesktop: '50%' }}
     >
         {children}
     </Text>
