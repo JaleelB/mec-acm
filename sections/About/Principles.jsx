@@ -14,7 +14,7 @@ const Principles = () => {
 
     return (
         <ResponsiveSection>
-        <SectionHeader>our guiding princioles</SectionHeader>
+        <SectionHeader>our guiding principles</SectionHeader>
             <Box>
                 <Subtitle>
                     We combine the freedom of personality and the synergy of a club, 
@@ -37,7 +37,7 @@ const Principles = () => {
                             <Flex key={principle}
                                 direction={{base: "column", md: "row"}}
                                 justify={{base: "normal", md: "space-between"}}
-                                borderTop="1px" borderColor="colorDark" borderBottom={index === principles.length - 1 && '1px'}
+                                borderTop="1px" borderBottom={index === principles.length - 1 && '1px'} borderColor="lightGrey" 
                                 py={{base:'1.5rem', smTablet: '2rem', mdDesktop: '3rem'}}
                             >
                                 <Box>
