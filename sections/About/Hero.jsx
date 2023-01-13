@@ -1,42 +1,11 @@
-import { Box, chakra, shouldForwardProp } from '@chakra-ui/react'
-import { isValidMotionProp, motion } from 'framer-motion';
+import { Box } from '@chakra-ui/react'
 import React from 'react'
-import { BodyParagraph, SectionHeader, Title } from '../../components'
+import { BodyParagraph, HeroAnimationWrapper, SectionHeader, Title } from '../../components'
 
-const ChakraBox = chakra(motion.div, {
-    shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
-});
-
-const child = {
-    visible: {
-        opacity: 1,
-        y: 0,
-        clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-        transition: {
-            type: "spring",
-            damping: 12,
-            stiffness: 30,
-        },
-    },
-    hidden: {
-        opacity: 0,
-        y: 20,
-        clipPath: 'polygon(0 0,100% 0,100% 0,0 50%)',
-        transition: {
-            type: "spring",
-            damping: 22,
-            stiffness: 50,
-        },
-    },
-};
 
 const Hero = () => {
   return (
-    <ChakraBox
-        variants={child} 
-        initial="hidden"
-        animate="visible"
-    >
+    <HeroAnimationWrapper>
         <Box 
             as="section"
             px={{base: 'wrapSm', lgTablet:'wrap2Md', lgDesktop:'wrap2Lg', xlDesktop: 'wrap2XXLg'}}
@@ -60,7 +29,7 @@ const Hero = () => {
             </Box>
             
         </Box>
-    </ChakraBox>
+    </HeroAnimationWrapper>
   )
 }
 
