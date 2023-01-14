@@ -85,25 +85,36 @@ const FAQs = () => {
                         if for some reason your question is not here, feel free to <Link href="/contact">contact us</Link>
                     </Text>
                 </motion.div>
-
-                <Accordion 
-                    allowToggle 
-                    pt={{base: '2rem', lgTablet: '3.5rem', mdDesktop: '4.5rem', xlDesktop: '6rem'}}
+                
+                <motion.div
+                    initial={{ opacity: 0, y: 90 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                        type: "easeInOut",
+                        duration: .9,
+                        delay: 2.2,
+                    }}
                 >
-                    {
-                        faqs.map((faq, index) => {
-                            return (
-                                <AccordionItem key={[faq, index]} >
-                                    <AccordionButton py={{base: 4, lg: 8}}>
-                                        <Box flex='1'fontSize="clamp(16px, 1.2vw, 25px)" textAlign='left'>{faq.q}</Box>
-                                        <AccordionIcon />
-                                    </AccordionButton>
-                                    <AccordionPanel py={8}>{faq.a}</AccordionPanel>
-                                </AccordionItem>
-                            )
-                        })
-                    }
-                </Accordion>
+                    <Accordion 
+                        allowToggle 
+                        pt={{base: '2rem', lgTablet: '3.5rem', mdDesktop: '4.5rem', xlDesktop: '6rem'}}
+                    >
+                        {
+                            faqs.map((faq, index) => {
+                                return (
+                                    <AccordionItem key={[faq, index]} >
+                                        <AccordionButton py={{base: 4, lg: 8}}>
+                                            <Box flex='1'fontSize="clamp(16px, 1.2vw, 25px)" textAlign='left'>{faq.q}</Box>
+                                            <AccordionIcon />
+                                        </AccordionButton>
+                                        <AccordionPanel py={8}>{faq.a}</AccordionPanel>
+                                    </AccordionItem>
+                                )
+                            })
+                        }
+                    </Accordion>
+                </motion.div>
+
             </ResponsiveSection>
         </Layout>
     )
