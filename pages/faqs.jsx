@@ -66,7 +66,7 @@ const FAQs = () => {
 
                 <Text
                     my={{base: '2rem', lgTablet: '3.5rem', mdDesktop: '4.5rem', xlDesktop: '6rem'}}
-                    maxW="650px"  ml="auto"
+                    maxW="650px"  ml="auto" w={{sm: '90', md: '50%', lgTablet: '60%', lg: '40%'}}
                 >
                     This is the place where you can find the most common questions quickly answered, 
                     if for some reason your question is not here, feel free to <Link href="/contact">contact us</Link>
