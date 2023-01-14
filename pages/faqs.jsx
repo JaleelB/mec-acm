@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React, { forwardRef } from 'react'
-import { ResponsiveSection, SectionHeader, Title } from '../components'
+import { HeroAnimationWrapper, ResponsiveSection, SectionHeader, Title } from '../components'
 import { Layout } from '../layout'
 import {
     Accordion,
@@ -58,12 +58,15 @@ const FAQs = () => {
                     display={{base: 'block', lg: 'none'}}
                     pt={{base: '20vw', lgTablet: '5vw', mdDesktop: '2vw'}}
                 />
-                <SectionHeader>FAQs</SectionHeader>
-                <Title>
-                    <div>Find answers to </div>
-                    <div>your questions here</div>
-                </Title>
 
+                <HeroAnimationWrapper>
+                    <SectionHeader>FAQs</SectionHeader>
+                    <Title>
+                        <div>Find answers to </div>
+                        <div>your questions here</div>
+                    </Title>
+                </HeroAnimationWrapper>
+                
                 <Text
                     my={{base: '2rem', lgTablet: '3.5rem', mdDesktop: '4.5rem', xlDesktop: '6rem'}}
                     maxW="650px"  ml="auto" w={{sm: '90', md: '50%', lgTablet: '60%', lg: '40%'}}
