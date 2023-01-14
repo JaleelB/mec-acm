@@ -1,7 +1,7 @@
 import { Box, Flex, Text } from '@chakra-ui/react'
 import Link from 'next/link'
 import React from 'react'
-import { ResponsiveSection, Title } from '../components'
+import { HeroAnimationWrapper, ResponsiveSection, Title } from '../components'
 import { Layout } from '../layout'
 
 const Contact = () => {
@@ -20,9 +20,11 @@ const Contact = () => {
                     <Box 
                         mb={{base: '2rem', lgTablet: '2.5rem', mdDesktop: '3.5rem'}}
                         maxW="965px" w="max-content"
-                    >
-                        <Title> We are always</Title> 
-                        <Title>here. Contact us</Title>
+                    >   
+                        <HeroAnimationWrapper>
+                            <Title> We are always</Title> 
+                            <Title>here. Contact us</Title>
+                        </HeroAnimationWrapper>
                     </Box>
                     <Text 
                         w={{sm: '90%', md:'60%', smTablet: '70%', mdDesktop:'70%'}}
