@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React, { forwardRef } from 'react'
+import React from 'react'
 import { HeroAnimationWrapper, ResponsiveSection, SectionHeader, Title } from '../components'
 import { Layout } from '../layout'
 import {
@@ -11,6 +11,7 @@ import {
     Box, 
     Text
   } from '@chakra-ui/react'
+  import { motion } from "framer-motion"
 
 const FAQs = () => {
 
@@ -66,14 +67,24 @@ const FAQs = () => {
                         <div>your questions here</div>
                     </Title>
                 </HeroAnimationWrapper>
-                
-                <Text
-                    my={{base: '2rem', lgTablet: '3.5rem', mdDesktop: '4.5rem', xlDesktop: '6rem'}}
-                    maxW="650px"  ml="auto" w={{sm: '90', md: '50%', lgTablet: '60%', lg: '40%'}}
+
+                <motion.div
+                    initial={{ opacity: 0, y: 90 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                        type: "easeInOut",
+                        duration: .9,
+                        delay: 1.2,
+                    }}
                 >
-                    This is the place where you can find the most common questions quickly answered, 
-                    if for some reason your question is not here, feel free to <Link href="/contact">contact us</Link>
-                </Text>
+                    <Text
+                        my={{base: '2rem', lgTablet: '3.5rem', mdDesktop: '4.5rem', xlDesktop: '6rem'}}
+                        maxW="650px"  ml="auto" w={{sm: '90', md: '50%', lgTablet: '60%', lg: '40%'}}
+                    >
+                        This is the place where you can find the most common questions quickly answered, 
+                        if for some reason your question is not here, feel free to <Link href="/contact">contact us</Link>
+                    </Text>
+                </motion.div>
 
                 <Accordion 
                     allowToggle 
