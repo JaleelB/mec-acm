@@ -108,8 +108,8 @@ const styles = {
             width: '100%', minHeight: '100vh'
         },
         section: {width: '100%'},
-        'h1, h2, h3':{ fontWeight: '300 !important'}
-        //   'figure > *': {width: '100%'}
+        'h1, h2, h3':{ fontWeight: '300 !important'},
+        h3: {lineHeight: '110% !important'}
     }),
 }
 
