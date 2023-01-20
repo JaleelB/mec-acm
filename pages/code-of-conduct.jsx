@@ -6,6 +6,7 @@ import { Layout } from '../layout'
 import { motion } from "framer-motion"
 
 const CodeofConduct = () => {
+    
     const formsOfDiscrimination = [
         'Racist, sexist, homophobic, transphobic, ableist, or other forms of hate speech or discrimination.',
         'Personal attacks, insults, or derogatory comments.',
