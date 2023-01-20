@@ -1,11 +1,11 @@
-import { Box, Flex, Select, Stack, Text } from '@chakra-ui/react'
+import { Box, Flex, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
 import { ResponsiveSection, RoundButton, TextInput, Title } from '../components'
 import { Layout } from '../layout'
 
 const Join = () => {
   return (
-    <Layout dark>
+    <Layout dark noFooter>
       <ResponsiveSection>
         <Box 
             className='ceiling-space'
