@@ -5,6 +5,7 @@ import { HeroAnimationWrapper, ResponsiveSection, SectionHeader, Title } from '.
 import { Layout } from '../layout'
 
 const CodeofConduct = () => {
+    
     const formsOfDiscrimination = [
         'Racist, sexist, homophobic, transphobic, ableist, or other forms of hate speech or discrimination.',
         'Personal attacks, insults, or derogatory comments.',

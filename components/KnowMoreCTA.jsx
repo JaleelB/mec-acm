@@ -6,7 +6,7 @@ import Subtitle from './Subtitle'
 const KnowMoreCTA = (props) => {
   return (
     <Box 
-        mt={{base: '100px', smTablet: '160px', lgTablet: '16.5vw', lgDesktop: '15vw', xlDesktop: '18vw'}}
+        mt={{base: '100px', smTablet: '160px', lgTablet: '16.5vw', lgDesktop: '10vw'}}
         mb={{base: '27px', smTablet: '42px', lgTablet: '8vw', lgDesktop: '6.5vw', xlDesktop: '4vw'}}
     >
         <Subtitle>Want to know more <br/>about us?</Subtitle>

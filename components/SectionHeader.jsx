@@ -8,7 +8,7 @@ const SectionHeader = ({children}) => {
       textTransform="uppercase"
       fontWeight="400 !important"
       fontSize="clamp(11px, 1.2vw, 25px)"
-      pb="1.5rem"
+      pb={{base: '.8rem', sm: "1.5rem"}}
     >
       {children}
     </Text>
