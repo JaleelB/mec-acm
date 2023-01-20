@@ -13,7 +13,7 @@ const TextInput = ({label, ph}) => {
             variant="flushed" 
             w="100%" size="lg"
             placeholder={ph}
-            pb="2rem"
+            pb="2rem" h={{mdDesktop: "75px"}}
         />
     </Box>
   )

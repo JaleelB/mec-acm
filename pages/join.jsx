@@ -1,11 +1,11 @@
-import { Box, Flex, Select, Stack, Text } from '@chakra-ui/react'
+import { Box, Flex, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
 import { ResponsiveSection, RoundButton, TextInput, Title } from '../components'
 import { Layout } from '../layout'
 
 const Join = () => {
   return (
-    <Layout dark>
+    <Layout dark noFooter>
       <ResponsiveSection>
         <Box 
             className='ceiling-space'
@@ -19,7 +19,7 @@ const Join = () => {
         </Box>
 
         <Flex 
-          direction={{base: "column", lgTablet: "row"}}
+          direction={{base: "column", lg: "row"}}
           justify="space-between" 
           mt={{base: '5rem', lgTablet:'7.5rem', lgDesktop:'wrap2Md'}}
         >
@@ -32,9 +32,9 @@ const Join = () => {
               for learning!
             </Text>   
           </Box>
-          <Stack flex="0 0 45%" spacing="1rem" mt={{base: '5rem', lgTablet:'7.5rem'}}>
+          <Stack flex="0 0 45%" spacing="1rem" mt={{base: '5rem', lgTablet:0}}>
               <TextInput label="What is your name?" ph="John/Jane Doe"/>
-              <TextInput label="What is your preferred email to receive club emails?" ph="studetname@personal.com"/>
+              <TextInput label="What is your preferred email to receive club emails?" ph="studentname@personal.com"/>
               <TextInput label="What is your current year in school?" ph="Freshman, Sophomore..." />
               <TextInput label="What is your major?" ph="Computer Science, Biology..."/>
           </Stack>
@@ -46,6 +46,12 @@ const Join = () => {
         >
           <RoundButton text="submit!" state/>
         </Flex>
+
+        <Box 
+            className='floor-space'
+            display={{base: 'block', lg: 'none'}}
+            pt={{base: '20vw', lgTablet: '5vw', lg: 0}}
+        />
         
       </ResponsiveSection>
     </Layout>
