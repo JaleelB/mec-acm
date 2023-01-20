@@ -3,6 +3,7 @@ import { Box, Flex, List, ListIcon, ListItem, Text } from '@chakra-ui/react'
 import React from 'react'
 import { HeroAnimationWrapper, ResponsiveSection, SectionHeader, Title } from '../components'
 import { Layout } from '../layout'
+import { motion } from "framer-motion"
 
 const CodeofConduct = () => {
     
@@ -15,20 +16,43 @@ const CodeofConduct = () => {
 
     return (
         <Layout>
-            <HeroAnimationWrapper>
-                <Box 
-                    className='ceiling-space'
-                    display={{base: 'block', lg: 'none'}}
-                    pt={{base: '20vw', lgTablet: '5vw', lg: 0}}
-                />
-                <ResponsiveSection>
+            
+            <Box 
+                className='ceiling-space'
+                display={{base: 'block', lg: 'none'}}
+                pt={{base: '20vw', lgTablet: '5vw', lg: 0}}
+            />
+            <ResponsiveSection>
+                
+                <HeroAnimationWrapper>
                     <SectionHeader>code of conduct</SectionHeader>
                     <Title>
                         We are committed to creating a safe and inclusive community for everyone,
                         regardless of their background, experience, or identity. 
                     </Title>
-                    <Box w="100%" h="1px" bg="lightGrey" my={{base: '3rem', lgTablet: '6rem', mdDesktop: '9rem'}}/>
+                </HeroAnimationWrapper>
 
+                <motion.div
+                    initial={{ opacity: 0, y: 90 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                        type: "easeInOut",
+                        duration: .9,
+                        delay: 1.2,
+                    }}
+                >
+                    <Box w="100%" h="1px" bg="lightGrey" my={{base: '3rem', lgTablet: '6rem', mdDesktop: '9rem'}}/>
+                </motion.div>
+                
+                <motion.div
+                    initial={{ opacity: 0, y: 90 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                        type: "easeInOut",
+                        duration: .9,
+                        delay: 2.2,
+                    }}
+                >
                     <Flex gap={{base: '2rem', lgTablet: '2.5rem', mdDesktop: '3.5rem'}} direction="column">
                         <Text>
                             To that end, we have established this code of conduct to set clear expectations for how we expect our community members to behave. By participating in our community, 
@@ -68,15 +92,16 @@ const CodeofConduct = () => {
                         </Text>
 
                     </Flex>
-                    
-                    <Box 
-                        className='floor-space'
-                        display={{base: 'block', md: 'none'}}
-                        pb={{base: '20vw', md: 0}}
-                    />
-                    
-                </ResponsiveSection>
-            </HeroAnimationWrapper>
+                </motion.div>
+                
+                <Box 
+                    className='floor-space'
+                    display={{base: 'block', md: 'none'}}
+                    pb={{base: '20vw', md: 0}}
+                />
+                
+            </ResponsiveSection>
+            
         </Layout>
     )
 }
