@@ -216,7 +216,7 @@ const Nav = () => {
                         autoRows="max-content" gap={{base:8, sm:12, md:16, lg: 20}}
                     >
                         {
-                            ['About Us', 'Code of Conduct', ...navLinks].map((link, index) => {
+                            ['About Us', 'Code of Conduct', ...navLinks, 'Join'].map((link, index) => {
                                 return (
                                     <Box 
                                         key={link}
