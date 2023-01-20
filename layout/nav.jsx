@@ -40,8 +40,6 @@ const Nav = () => {
 
     }, [scroll.y, scroll.lastY])  
 
-    console.log(useTheme())
-
     return (
         <Box 
             as="header" ref={showHeader} 
