@@ -17,6 +17,7 @@
     "@fontsource/open-sans": "^4.5.13",
     "@fontsource/questrial": "^4.5.10",
     "@fontsource/raleway": "^4.5.11",
+    "@hookform/error-message": "^2.0.1",
     "@next/font": "13.1.1",
     "axios": "^1.2.2",
     "eslint": "8.31.0",

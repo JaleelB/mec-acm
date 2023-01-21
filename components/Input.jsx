@@ -1,7 +1,11 @@
-import { Box, Flex, Input, FormLabel, FormErrorMessage } from '@chakra-ui/react'
+import { Box, Flex, Input, FormLabel, Text } from '@chakra-ui/react'
 import React from 'react'
+import { useForm } from "react-hook-form";
 
-const TextInput = ({label, ph, id, ref, errors, register}) => {
+const TextInput = ({label, ph, id, inputRef, errors, register}) => {
+
+  const { setError } = useForm();
+  
   return (
     <Box w="100%" py={4}>
         <Flex mb="1rem">
@@ -10,7 +14,7 @@ const TextInput = ({label, ph, id, ref, errors, register}) => {
         </Flex>
 
         <Input 
-          ref={ref}
+          ref={inputRef}
           id={id}
           type="text"
           fontSize="inherit"
@@ -21,17 +25,28 @@ const TextInput = ({label, ph, id, ref, errors, register}) => {
           pb="2rem" h={{mdDesktop: "75px"}}
           borderColor="colorLight"
           {...register(id, {
-            required: 'This is required',
+            required: id !== "year" ? 'This is required': 'Input must be one of the following: Freshman, Sophomore, Junior, Senior',
             minLength: 1,
-            pattern: id == 'year' && /^(freshman|Freshman|sophomore|Sophomore|junior|Junior|senior|Senior)$/,
+            pattern: id === 'year' && /^(freshman|Freshman|sophomore|Sophomore|junior|Junior|senior|Senior)$/,
             shouldFocusError: true,
+            validate: (inputRef) => {
+              if(id === "year" && inputRef.current?.value !== ''){
+                if(/^(freshman|Freshman|sophomore|Sophomore|junior|Junior|senior|Senior)$/.test(inputRef.current?.value) === false)
+                setError(id, { type: "focus", shouldFocus: true, message: 'Input must be one of the following: Freshman, Sophomore, Junior, Senior' });
+              }
+            }
           })}
-          aria-invalid={errors.id ? "true" : "false"} 
+          aria-invalid={errors[id] ? "true" : "false"} 
         />
 
-        <FormErrorMessage>
-          {errors.id && errors.id?.message}
-        </FormErrorMessage>
+        {errors[id] && (
+          <Text
+            mt=".5rem"
+            color="red.400"
+          >
+            {errors[id].message}
+          </Text>
+        )}
 
     </Box>
   )
