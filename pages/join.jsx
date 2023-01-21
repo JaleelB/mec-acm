@@ -10,6 +10,7 @@ import { Layout } from '../layout'
 import { useForm } from 'react-hook-form'
 
 
+
 const RoundButton = (props) => {
 
   return (
@@ -26,7 +27,7 @@ const RoundButton = (props) => {
             backgroundColor: 'colorBlue',
             transform: 'scale(1.1)'
         }}
-        onClick={props.handleEmptyFields}
+        onClick={()=> console.log(props.errors)}
         // onClick={() => {
       
         //   if()
@@ -115,29 +116,14 @@ const Join = () => {
 };
 
   const onSubmit = (values) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        addMember()
-        resolve()
-      }, 2000)
-    })
+    // return new Promise((resolve) => {
+    //   setTimeout(() => {
+    //     addMember()
+    //     resolve()
+    //   }, 2000)
+    // })
   }
 
-  const handleEmptyFields = () => {
-    if(!nameRef.current?.value || !emailRef.current?.value || !majorRef.current?.value || !yearRef.current?.value){
-      toast({
-        title: 'Empty Inputs',
-        description: "Fill out all input fields.",
-        status: 'error',
-        isClosable: false,
-        duration: 10000,
-        position: 'top-right',
-        containerStyle: {
-          fontSize: "clamp(16px, 1.2vw, 20px)"
-        },
-      })
-    }
-  }
 
   return (  
 
@@ -195,22 +181,22 @@ const Join = () => {
               mt={{base: '5rem', lgTablet:0}}
               onSubmit={handleSubmit(onSubmit)}
             >
-                <FormControl isInvalid={error}>
+                <FormControl>
                   <TextInput 
                     label="What is your name?" ph="John/Jane Doe" id="name" 
-                    ref={nameRef} errors={errors}  register={register}
+                    inputRef={nameRef} errors={errors}  register={register}
                   />
                   <TextInput
                      label="What is your preferred email to receive club emails?" ph="studentname@personal.com" 
-                     id="email" ref={emailRef} errors={errors}  register={register}
+                     id="email" inputRef={emailRef} errors={errors}  register={register}
                     />
                   <TextInput 
                     label="What is your current year in school?" ph="Freshman, Sophomore..." 
-                    id="year" ref={yearRef} errors={errors} register={register}
+                    id="year" inputRef={yearRef} errors={errors} register={register}
                   />
                   <TextInput 
                     label="What is your major?" ph="Computer Science, Biology..." 
-                    id="major" ref={majorRef} errors={errors}  register={register}
+                    id="major" inputRef={majorRef} errors={errors}  register={register}
                   />
                 </FormControl>
 
@@ -221,7 +207,7 @@ const Join = () => {
                   <RoundButton 
                     text="submit!" 
                     state 
-                    handleEmptyFields={handleEmptyFields}
+                    errors={errors}
                     isSubmitting={isSubmitting}
                   />
                 </Flex>
