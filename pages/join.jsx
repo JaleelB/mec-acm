@@ -1,6 +1,6 @@
 import { 
   Box, Flex, Stack, Text,
-  FormControl, Button, useToast
+  FormControl, Button, useToast, Heading
 } from '@chakra-ui/react'
 
 import { motion } from 'framer-motion'
@@ -8,6 +8,9 @@ import React, { useState, useRef } from 'react'
 import { HeroAnimationWrapper, ResponsiveSection, TextInput, Title } from '../components'
 import { Layout } from '../layout'
 import { useForm } from 'react-hook-form'
+import axios from 'axios'
+import { WarningTwoIcon } from '@chakra-ui/icons'
+import { CheckIcon } from '@chakra-ui/icons'
 
 
 
@@ -27,19 +30,6 @@ const RoundButton = (props) => {
             backgroundColor: 'colorBlue',
             transform: 'scale(1.1)'
         }}
-        onClick={()=> console.log(props.errors)}
-        // onClick={() => {
-      
-        //   if()
-        //     toast({
-        //       title: 'Empty Inputs',
-        //       description: `Fill out all inputs to continue`,
-        //       status: `error`,
-        //       duration: 5000,
-        //       isClosable: true,
-        //       position: 'top-right',
-        //     })
-        // }}
     >
         <Flex 
             justify="center" direction="column"
@@ -89,13 +79,15 @@ const Join = () => {
   const majorRef = useRef(null);
   const [error, setError] = useState(false);
 
-  const addMember = async(e) => {
+  const addMember = async() => {
+
+    const date = new Date()
         
     const member = {
-        name: nameRef.current?.value,
-        email: emailRef.current?.value,
-        year: yearRef.current?.value,
-        major: majorRef.current?.value,
+        name: nameRef.current,
+        email: emailRef.current,
+        year: yearRef.current,
+        major: majorRef.current,
         date: `${date.getMonth() < 10 ? `0${date.getMonth() + 1}` : date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`
     };
 
@@ -105,23 +97,62 @@ const Join = () => {
         })
 
         if(response.data.success){
-            const timer = setTimeout(() => setSuccess(true), 2000);
+            const timer = setTimeout(() => {
+              toast({
+                position: 'top-right',
+                duration: 15000,
+                isClosable: true,
+                render: () => (
+                  <Flex 
+                    color='white' gap={6}  
+                    py={2} px={6} bg='green.500'
+                    borderRadius="8px"
+                  >
+                    <CheckIcon ml={0.5} mt={4} fontSize="1.3rem"/>
+                    <Flex direction="column">
+                      <Text as="h4" fontWeight="700" fontSize="20px">Sign up successful</Text>
+                      <Text mt="-3" fontSize="18px">Welcome to the club</Text>
+                    </Flex>
+                    
+                  </Flex>
+                ),
+              })
+            })
             return () => clearTimeout(timer);
         }
     }
     catch(e){
-        setErrorMessage(e.message || 'Something went wrong with signing up');
+      setError(e.message || 'Something went wrong with signing up');
+      toast({
+        position: 'top-right',
+        duration: 15000,
+        isClosable: true,
+        render: () => (
+          <Flex 
+            color='white' gap={6}  
+            py={2} px={6} bg='red.500'
+            borderRadius="8px"
+          >
+            <WarningTwoIcon ml={0.5} mt={4} fontSize="1.3rem"/>
+            <Flex direction="column">
+              <Text as="h4" fontWeight="700" fontSize="20px">Error</Text>
+              <Text mt="-3" fontSize="16px">{eror}</Text>
+            </Flex>
+            
+          </Flex>
+        ),
+      })
     }
 
 };
 
   const onSubmit = (values) => {
-    // return new Promise((resolve) => {
-    //   setTimeout(() => {
-    //     addMember()
-    //     resolve()
-    //   }, 2000)
-    // })
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        addMember()
+        resolve()
+      }, 2000)
+    })
   }
 
 
@@ -181,9 +212,9 @@ const Join = () => {
               mt={{base: '5rem', lgTablet:0}}
               onSubmit={handleSubmit(onSubmit)}
             >
-                <FormControl>
+                <FormControl isInvalid={error}>
                   <TextInput 
-                    label="What is your name?" ph="John/Jane Doe" id="name" 
+                    label="What is your full name?" ph="John/Jane Doe" id="name" 
                     inputRef={nameRef} errors={errors}  register={register}
                   />
                   <TextInput
@@ -207,7 +238,6 @@ const Join = () => {
                   <RoundButton 
                     text="submit!" 
                     state 
-                    errors={errors}
                     isSubmitting={isSubmitting}
                   />
                 </Flex>

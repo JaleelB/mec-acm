@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@chakra-ui/icons": "^2.0.15",
+    "@chakra-ui/icons": "^2.0.17",
     "@chakra-ui/react": "^2.4.6",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
@@ -19,7 +19,7 @@
     "@fontsource/raleway": "^4.5.11",
     "@hookform/error-message": "^2.0.1",
     "@next/font": "13.1.1",
-    "axios": "^1.2.2",
+    "axios": "^1.2.3",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
     "framer-motion": "^6.5.1",
