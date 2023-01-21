@@ -14,7 +14,6 @@ const TextInput = ({label, ph, id, inputRef, errors, register}) => {
         </Flex>
 
         <Input 
-          ref={inputRef}
           id={id}
           type="text"
           fontSize="inherit"
@@ -27,14 +26,11 @@ const TextInput = ({label, ph, id, inputRef, errors, register}) => {
           {...register(id, {
             required: id !== "year" ? 'This is required': 'Input must be one of the following: Freshman, Sophomore, Junior, Senior',
             minLength: 1,
-            pattern: id === 'year' && /^(freshman|Freshman|sophomore|Sophomore|junior|Junior|senior|Senior)$/,
+            pattern: 
+              id === 'year' && /^(freshman|Freshman|sophomore|Sophomore|junior|Junior|senior|Senior)$/ | 
+              id === 'email' && /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
             shouldFocusError: true,
-            validate: (inputRef) => {
-              if(id === "year" && inputRef.current?.value !== ''){
-                if(/^(freshman|Freshman|sophomore|Sophomore|junior|Junior|senior|Senior)$/.test(inputRef.current?.value) === false)
-                setError(id, { type: "focus", shouldFocus: true, message: 'Input must be one of the following: Freshman, Sophomore, Junior, Senior' });
-              }
-            }
+            onChange: (e) => inputRef.current = e.target.value
           })}
           aria-invalid={errors[id] ? "true" : "false"} 
         />

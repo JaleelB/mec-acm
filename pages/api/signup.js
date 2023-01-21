@@ -3,9 +3,6 @@ import {google} from "googleapis";
 export default async function signup(req, res){
 
   const {name, email, year, major, date} = req.body;
-  
-  //reimplemnt forms with react hook forms and chakra ui
-  //add success toast message when signed up
 
   try{
     //preparing auth
