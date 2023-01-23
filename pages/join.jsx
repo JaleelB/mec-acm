@@ -111,7 +111,7 @@ const Join = () => {
                     <CheckIcon ml={0.5} mt={4} fontSize="1.3rem"/>
                     <Flex direction="column">
                       <Text as="h4" fontWeight="700" fontSize="20px">Sign up successful</Text>
-                      <Text mt="-3" fontSize="18px">Welcome to the club</Text>
+                      <Text mt="1" fontSize="18px">Welcome to the club</Text>
                     </Flex>
                     
                   </Flex>
@@ -136,7 +136,7 @@ const Join = () => {
             <WarningTwoIcon ml={0.5} mt={4} fontSize="1.3rem"/>
             <Flex direction="column">
               <Text as="h4" fontWeight="700" fontSize="20px">Error</Text>
-              <Text mt="-3" fontSize="16px">{eror}</Text>
+              <Text mt="1" fontSize="16px">{error}</Text>
             </Flex>
             
           </Flex>
