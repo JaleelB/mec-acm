@@ -1,10 +1,7 @@
 import { Box, Flex, Input, FormLabel, Text } from '@chakra-ui/react'
 import React from 'react'
-import { useForm } from "react-hook-form";
 
 const TextInput = ({label, ph, id, inputRef, errors, register}) => {
-
-  const { setError } = useForm();
   
   return (
     <Box w="100%" py={4}>
@@ -26,9 +23,6 @@ const TextInput = ({label, ph, id, inputRef, errors, register}) => {
           {...register(id, {
             required: id !== "year" ? 'This is required': 'Input must be one of the following: Freshman, Sophomore, Junior, Senior',
             minLength: 1,
-            // pattern: 
-            //   id === 'year' && /^(freshman|Freshman|sophomore|Sophomore|junior|Junior|senior|Senior)$/ | 
-            //   id === 'email' && /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
             shouldFocusError: true,
             onChange: (e) => inputRef.current = e.target.value
           })}
