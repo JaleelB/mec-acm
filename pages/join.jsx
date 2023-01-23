@@ -151,7 +151,7 @@ const Join = () => {
       setTimeout(() => {
         addMember()
         resolve()
-      }, 2000)
+      }, 1000)
     })
   }
 

@@ -1,10 +1,7 @@
 import { Box, Flex, Input, FormLabel, Text } from '@chakra-ui/react'
 import React from 'react'
-import { useForm } from "react-hook-form";
 
 const TextInput = ({label, ph, id, inputRef, errors, register}) => {
-
-  const { setError } = useForm();
   
   return (
     <Box w="100%" py={4}>
