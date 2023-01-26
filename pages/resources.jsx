@@ -51,7 +51,7 @@ const Resources = ({ resources }) => {
                 </Flex>
 
                 <Grid 
-                    templateColumns={{base: '1fr', md: "1fr 1fr", lgTablet: '1fr', lg:'1fr 1fr'}}
+                    templateColumns={{base: '1fr', md: "1fr 1fr", lgTablet: '1fr', lg:'1fr 1fr', xlDesktop: '1fr 1fr 1fr'}}
                     gap={{base: 8, md: 2, lgTablet: 6}}  w="100%"
                     mt={{base: '5rem', lgTablet:'7.5rem', lgDesktop:'wrap2Md'}}
                 >
@@ -167,8 +167,6 @@ export async function getStaticProps() {
     };
 };
   
-
-
 
 
 export default Resources
