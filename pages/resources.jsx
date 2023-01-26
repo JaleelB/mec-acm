@@ -82,10 +82,10 @@ const Resources = ({ resources }) => {
                                             border="1px" px={6} py={2}
                                             borderColor="colorDark" borderRadius="100px"
                                         >
-                                            {resource.attributes.Type}
+                                            {resource.attributes.Type || "Programming"}
                                         </Box>
                                         <Link 
-                                            href={resource.attributes.Url}
+                                            href={resource.attributes.Url || '/resources'}
                                             target="_blank"
                                             rel='noreferrer'
                                         >
@@ -100,8 +100,8 @@ const Resources = ({ resources }) => {
                                     </Flex>
                                     
                                     <Flex  mt={{base: '5rem', md:'7.5rem', lgDesktop:'wrap2Md'}} direction="column">
-                                        <Text mb={3} fontWeight="500 !important">{resource.attributes.Author}</Text>
-                                        <Heading fontWeight="400 !important">{resource.attributes.Title}</Heading>
+                                        <Text mb={3} fontWeight="500 !important">{resource.attributes.Author || ""}</Text>
+                                        <Heading fontWeight="400 !important">{resource.attributes.Title || "Coming Soon: Resource on ai, web dev, design etc"}</Heading>
                                     </Flex>
 
                                 </GridItem>
