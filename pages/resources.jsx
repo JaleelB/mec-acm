@@ -15,7 +15,8 @@ export async function getStaticProps() {
     return {
         props: {
             resources: resourcesList
-        }
+        },
+        fallback: true
     };
 };
   
@@ -70,10 +71,10 @@ const Resources = ({ resources }) => {
                     mt={{base: '5rem', lgTablet:'7.5rem', lgDesktop:'wrap2Md'}}
                 >
                     {
-                        resources.map(resource => {
+                        resources.map((resource, index) => {
                             return (
                                  <GridItem
-                                    key={resource.id}
+                                    key={resource.id || index}
                                     border="1px" borderColor="colorDark"
                                     borderRadius="10px" p={{base: 5, md: 10}}
                                 >
