@@ -1,20 +1,13 @@
 import { ArrowForwardIcon } from '@chakra-ui/icons'
 import { Box, Button, Flex, Grid, GridItem, Heading, Text } from '@chakra-ui/react'
+import axios from 'axios'
 import Link from 'next/link'
 import React from 'react'
 import { ResponsiveSection, SectionHeader, Title } from '../components'
 import { Layout } from '../layout'
 
 
-const Resources = () => {
-
-    const resources = [
-        {author: 'FreeCodeCamp', title: "Learn to code for free with F's comprehensive curriculum.", type: "Courses, Tutorials, Bootcamps", url: 'https://www.freecodecamp.org/'},
-        {author: 'FreeCodeCamp', title: "Learn to code for free with FreeCodeCamp's comprehensive curriculum.", type: "Courses, Tutorials, Bootcamps", url: 'https://www.freecodecamp.org/'},
-        {author: 'FreeCodeCamp', title: "Learn to code for free with FreeCodeCamp's comprehensive curriculum.", type: "Courses, Tutorials, Bootcamps", url: 'https://www.freecodecamp.org/'},
-        {author: 'FreeCodeCamp', title: "Learn to code for free with FreeCodeCamp's comprehensive curriculum.", type: "Courses, Tutorials, Bootcamps", url: 'https://www.freecodecamp.org/'},
-        {author: 'FreeCodeCamp', title: "Learn to code for free with FreeCodeCamp's comprehensive curriculum.", type: "Courses, Tutorials, Bootcamps", url: 'https://www.freecodecamp.org/'}
-    ]
+const Resources = ({ resources }) => {
 
     return (
         <Layout>
@@ -32,9 +25,9 @@ const Resources = () => {
                 </Box>
 
                 <Flex as="ul"
-                    listStyleType="none" p={0} w={{base: "100%", md: "60%", lgTablet: '70%',mdDesktop: '50%', xlDesktop: '100%'}}
-                    justify={{base: "center", lgTablet: "space-between"}}
-                    flexWrap="wrap" gap={6} mx="auto"
+                    listStyleType="none" p={0} w={{base: "100%", md: "60%", lgTablet: '70%',mdDesktop: '50%', lgDesktop: '100%'}}
+                    justify={{base: "center"}}
+                    flexWrap="wrap" gap={{base: 6, lgDesktop: 10, xlDesktop: 16}} mx="auto"
                     mt={{base: '5rem', lgTablet:'7.5rem', lgDesktop:'wrap2Md'}}
                 >
                     {
@@ -66,7 +59,7 @@ const Resources = () => {
                         resources.map(resource => {
                             return (
                                  <GridItem
-                                    key={resource}
+                                    key={resource.id}
                                     border="1px" borderColor="colorDark"
                                     borderRadius="10px" p={{base: 5, md: 10}}
                                 >
@@ -75,10 +68,10 @@ const Resources = () => {
                                             border="1px" px={6} py={2}
                                             borderColor="colorDark" borderRadius="100px"
                                         >
-                                            {resource.type}
+                                            {resource.attributes.Type}
                                         </Box>
                                         <Link 
-                                            href={resource.url}
+                                            href={resource.attributes.Url}
                                             target="_blank"
                                             rel='noreferrer'
                                         >
@@ -92,9 +85,9 @@ const Resources = () => {
                                         
                                     </Flex>
                                     
-                                    <Flex  mt={'wrap2Md'} direction="column">
-                                        <Text mb={3} fontWeight="500 !important">{resource.author}</Text>
-                                        <Heading fontWeight="400 !important">{resource.title}</Heading>
+                                    <Flex  mt={{base: '5rem', md:'7.5rem', lgDesktop:'wrap2Md'}} direction="column">
+                                        <Text mb={3} fontWeight="500 !important">{resource.attributes.Author}</Text>
+                                        <Heading fontWeight="400 !important">{resource.attributes.Title}</Heading>
                                     </Flex>
 
                                 </GridItem>
@@ -161,5 +154,21 @@ const Resources = () => {
         </Layout>
     )
 }
+
+export async function getStaticProps() {
+
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/resources`)
+    const resourcesList = await res.data.data;
+
+    return {
+        props: {
+            resources: resourcesList
+        }
+    };
+};
+  
+
+
+
 
 export default Resources
