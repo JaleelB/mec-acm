@@ -209,7 +209,7 @@ const Join = () => {
               as="form" 
               flex="0 0 45%" 
               spacing="1rem" 
-              mt={{base: '5rem', lgTablet:0}}
+              mt={{base: '5rem', lg:0}}
               onSubmit={handleSubmit(onSubmit)}
             >
                 <FormControl isInvalid={error}>
