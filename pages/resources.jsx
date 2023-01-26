@@ -16,7 +16,7 @@ export async function getStaticProps() {
         props: {
             resources: resourcesList
         },
-        fallback: true
+        
     };
 };
   
