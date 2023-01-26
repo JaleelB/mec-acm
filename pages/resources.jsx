@@ -155,18 +155,7 @@ const Resources = ({ resources }) => {
     )
 }
 
-export async function getStaticProps() {
 
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/resources`)
-    const resourcesList = await res.data.data;
-
-    return {
-        props: {
-            resources: resourcesList
-        }
-    };
-};
-  
 
 
 export default Resources
