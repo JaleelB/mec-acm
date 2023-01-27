@@ -24,6 +24,12 @@ const Resource = ({resource}) => {
             <Box 
                 border="1px" px={4} py={{base: 3, lgDesktop: 2}}
                 borderColor="colorDark" borderRadius="100%"
+                transition="all 300ms ease"
+                _hover={{
+                  bg: "colorBlue",
+                  borderColor: "colorBlue",
+                  color: "textLight"
+                }}
             >
                 <ArrowForwardIcon transform="rotate(-45deg)"/>
             </Box>

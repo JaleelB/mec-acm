@@ -3,7 +3,7 @@ import { Box, Button, Flex, Grid, GridItem, Heading, Text } from '@chakra-ui/rea
 import axios from 'axios'
 import Link from 'next/link'
 import React, {useState} from 'react'
-import { Filters, Resource, ResponsiveSection, SectionHeader, Title } from '../components'
+import { Filters, Resource, ResponsiveSection, SectionHeader, TabContent, Title } from '../components'
 import { Layout } from '../layout'
 
 
@@ -74,11 +74,7 @@ const Resources = ({ resources }) => {
                     
                 </Flex>
 
-                <Grid 
-                    templateColumns={{base: '1fr', md: "1fr 1fr", lgTablet: '1fr', lg:'1fr 1fr', xlDesktop: '1fr 1fr 1fr'}}
-                    gap={{base: 8, md: 2, lgTablet: 6}}  w="100%"
-                    mt={{base: '5rem', lgTablet:'7.5rem', lgDesktop:'wrap2Md'}}
-                >
+                <TabContent selectedTab={selectedTab}>
                     {
                         resources.map((resource, index) => {
                             return (
@@ -86,15 +82,14 @@ const Resources = ({ resources }) => {
                                     key={resource.id || index}
                                 >
                                     <Resource resource={resource}/>
-                                    
-
+                
                                 </GridItem>
                             )
                         })
                         
                     }
                     
-                </Grid>
+                </TabContent>
 
                 <Button
                     role="group"
