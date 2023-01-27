@@ -3,7 +3,7 @@ import { Box, Flex, Grid, GridItem, Heading, Text } from '@chakra-ui/react'
 import Link from 'next/link'
 import React from 'react'
 
-const Filters = ({ categories, getSelectedCategories }) => {
+const TabContent = ({ categories, getSelectedCategories }) => {
   return (
     <Grid 
         templateColumns={{base: '1fr', md: "1fr 1fr", lgTablet: '1fr', lg:'1fr 1fr', xlDesktop: '1fr 1fr 1fr'}}
@@ -55,4 +55,4 @@ const Filters = ({ categories, getSelectedCategories }) => {
   )
 }
 
-export default Filters
+export default TabContent
