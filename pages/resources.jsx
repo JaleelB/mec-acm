@@ -3,7 +3,7 @@ import { Box, Button, Flex, Grid, GridItem, Heading, Text } from '@chakra-ui/rea
 import axios from 'axios'
 import Link from 'next/link'
 import React, {useState} from 'react'
-import { Filters, ResponsiveSection, SectionHeader, Title } from '../components'
+import { Filters, Resource, ResponsiveSection, SectionHeader, Title } from '../components'
 import { Layout } from '../layout'
 
 
@@ -38,6 +38,7 @@ const Resources = ({ resources }) => {
                     display={{base: 'block', lg: 'none'}}
                     pt={{base: '20vw', lgTablet: '5vw', lg: 0}}
                 />
+
                 <SectionHeader>Resources</SectionHeader>
                 <Box maxW="1700px"> 
                     <Title>
@@ -57,7 +58,7 @@ const Resources = ({ resources }) => {
                                 <Box as="li" key={filter}
                                     cursor="pointer"
                                     color={filter === selectedTab ? "colorBlue" : "inherit"}
-                                    fontWeight={filter === selectedTab ? "500" : "inherit"}
+                                    fontWeight={filter === selectedTab ? "700" : "inherit"}
                                     onClick={() => setSelectedTab(filter)}
                                     _hover={{
                                         color: "colorBlue"
@@ -81,37 +82,11 @@ const Resources = ({ resources }) => {
                     {
                         resources.map((resource, index) => {
                             return (
-                                    <GridItem
+                                <GridItem
                                     key={resource.id || index}
-                                    border="1px" borderColor="colorDark"
-                                    borderRadius="10px" p={{base: 5, md: 10}}
                                 >
-                                    <Flex justify="space-between" gap={{base: 12, smTablet: 0, md: 8, mdDesktop: 0}}>
-                                        <Box
-                                            border="1px" px={6} py={2}
-                                            borderColor="colorDark" borderRadius="100px"
-                                        >
-                                            {resource.attributes.Type || "Programming"}
-                                        </Box>
-                                        <Link    
-                                            href={resource.attributes.Url || '/resources'}
-                                            target="_blank"
-                                            rel='noreferrer'
-                                        >
-                                            <Box 
-                                                border="1px" px={4} py={{base: 3, lgDesktop: 2}}
-                                                borderColor="colorDark" borderRadius="100%"
-                                            >
-                                                <ArrowForwardIcon transform="rotate(-45deg)"/>
-                                            </Box>
-                                        </Link>
-                                        
-                                    </Flex>
+                                    <Resource resource={resource}/>
                                     
-                                    <Flex  mt={{base: '5rem', md:'7.5rem', lgDesktop:'wrap2Md'}} direction="column">
-                                        <Text mb={3} fontWeight="500 !important">{resource.attributes.Author || ""}</Text>
-                                        <Heading fontWeight="400 !important">{resource.attributes.Title || "Coming Soon: Resource on ai, web dev, design etc"}</Heading>
-                                    </Flex>
 
                                 </GridItem>
                             )
