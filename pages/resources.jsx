@@ -1,8 +1,8 @@
 import { ArrowForwardIcon } from '@chakra-ui/icons'
-import { Box, Button, Flex, Grid, GridItem, Heading, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, Grid, GridItem, Heading, Tab, TabList, Tabs, Text } from '@chakra-ui/react'
 import axios from 'axios'
 import Link from 'next/link'
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { Filters, Resource, ResponsiveSection, SectionHeader, TabContent, Title } from '../components'
 import { Layout } from '../layout'
 
@@ -29,6 +29,13 @@ const Resources = ({ resources }) => {
         'Interview Prep', 'Web Development', 'Web Design'
     ];
     const [selectedTab, setSelectedTab] = useState(tabs[0])
+    const [resourceData, setResourceData] = useState(() => { return [...resources] }) //sets state only once upon initial render
+
+    const filterResources = (filter) =>  setResourceData(filter === "All" ? [...resources] : resources.filter( data => data.attributes.Type === filter));
+
+    useEffect(() => {
+        console.log(resourceData);
+    },[resourceData])
 
     return (
         <Layout>
@@ -46,50 +53,59 @@ const Resources = ({ resources }) => {
                     </Title>
                 </Box>
 
-                <Flex as="ul"
-                    listStyleType="none" p={0} w={{base: "100%", md: "60%", lgTablet: '70%',mdDesktop: '50%', lgDesktop: '100%'}}
-                    justify={{base: "center"}}
-                    flexWrap="wrap" gap={{base: 6, lgDesktop: 10, xlDesktop: 16}} mx="auto"
-                    mt={{base: '5rem', lgTablet:'7.5rem', lgDesktop:'wrap2Md'}}
-                >
-                    {
-                        tabs.map(filter => {
-                            return (
-                                <Box as="li" key={filter}
-                                    cursor="pointer"
-                                    color={filter === selectedTab ? "colorBlue" : "inherit"}
-                                    fontWeight={filter === selectedTab ? "700" : "inherit"}
-                                    onClick={() => setSelectedTab(filter)}
-                                    _hover={{
-                                        color: "colorBlue"
-                                    }}
-                                >
-                                    
-                                    {filter}
-                                    
-                                </Box>
-                            )
-                        })
-                    }
-                    
-                </Flex>
+                <Box>
 
-                <TabContent selectedTab={selectedTab}>
-                    {
-                        resources.map((resource, index) => {
-                            return (
-                                <GridItem
-                                    key={resource.id || index}
-                                >
-                                    <Resource resource={resource}/>
-                
-                                </GridItem>
-                            )
-                        })
+                    <Flex as="ul"
+                        listStyleType="none" p={0} w={{base: "100%", md: "60%", lgTablet: '70%',mdDesktop: '50%', lgDesktop: '100%'}}
+                        justify={{base: "center"}} variant="unstyled"
+                        flexWrap="wrap" gap={{base: 6, lgDesktop: 10, xlDesktop: 16}} mx="auto"
+                        mt={{base: '5rem', lgTablet:'7.5rem', lgDesktop:'wrap2Md'}}
+                        transition="all 300ms ease"
+                    >
+                        {
+                            tabs.map(filter => {
+                                return (
+                                    <Box key={filter}
+                                        cursor="pointer"
+                                        color={filter === selectedTab ? "colorBlue" : "inherit"}
+                                        fontWeight={filter === selectedTab ? "500" : "inherit"}
+                                        borderBottom={filter === selectedTab && "1px"} borderBottomColor={filter === selectedTab  && "colorBlue"}
+                                        onClick={() => {
+                                            setSelectedTab(filter)
+                                            filterResources(filter)
+                                        }}
+                                        transition="all 300ms ease"
+                                        _hover={{
+                                            color: "colorBlue"
+                                        }}
+                                    >
+                                        
+                                        {filter}
+                                        
+                                    </Box>
+                                )
+                            })
+                        }
                         
-                    }
+                    </Flex>
+
+                    <TabContent >
+                        {
+                            resourceData.map((resource, index) => {
+                                return (
+                                    <GridItem
+                                        key={resource.id || index}
+                                    >
+                                        <Resource resource={resource}/>
                     
-                </TabContent>
+                                    </GridItem>
+                                )
+                            })
+                            
+                        }
+                        
+                    </TabContent>
+                </Box>
 
                 <Button
                     role="group"
