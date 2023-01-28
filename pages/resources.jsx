@@ -96,7 +96,7 @@ const Resources = ({ resources }) => {
                                     <GridItem
                                         key={resource.id || index}
                                     >
-                                        <Resource resource={resource}/>
+                                        <Resource resource={resource} index={index}/>
                     
                                     </GridItem>
                                 )
