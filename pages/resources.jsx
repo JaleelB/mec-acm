@@ -107,52 +107,6 @@ const Resources = ({ resources }) => {
                     </TabContent>
                 </Box>
 
-                <Button
-                    role="group"
-                    bg="bgDark" color="textLight"
-                    textTransform="capitalize" fontWeight="400"
-                    fontSize={{base: 'md', lgDesktop: '20px', xlDesktop: 'xl'}}
-                    transition="transform ease-in 300ms"
-                    justify="center" align="center"
-                    w="max-content" mx="auto" display="flex"
-                    py={{base: 7, mdDesktop: 9}} px={{base: 8, tablet:12}}
-                    mt={{base: '5rem', lgTablet:'7.5rem', lgDesktop:'wrap2Md'}}
-                    borderRadius="100px"
-                    _hover={{
-                        backgroundColor: 'colorBlue'
-                    }}
-                >
-                    <Flex
-                        justify="center" direction="column"
-                        overflow="hidden" height="20px"
-                    >
-                        <Flex 
-                            height="100%"
-                            style={{transformStyle: "preserve-3d"}}
-                            transition="transform 300ms ease" 
-                            transform="translateY(50%)"
-                            align="center"
-                            _groupHover={{      
-                                transform: "translateY(-50%)"                                  
-                            }}
-                        >
-                            See more
-                        </Flex>
-                        <Flex
-                            height="100%"
-                            style={{transformStyle: "preserve-3d"}}
-                            transition="transform 300ms ease" 
-                            transform="translateY(50%)"
-                            align="center"
-                            _groupHover={{
-                                transform:"translateY(-50%)"
-                            }}
-                        >
-                            See more
-                        </Flex>
-                    </Flex>
-                </Button>
-
                 <Box 
                     className='floor-space'
                     display={{base: 'block', lg: 'none'}}
