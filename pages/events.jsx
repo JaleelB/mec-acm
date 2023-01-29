@@ -1,27 +1,92 @@
-import { Box } from '@chakra-ui/react'
+import { Box, Button, Flex, Stack } from '@chakra-ui/react'
 import React from 'react'
 import { ResponsiveSection, SectionHeader, Title } from '../components'
 import { Layout } from '../layout'
 
-const Events = () => {
-  return (
-    <Layout>
-        <ResponsiveSection>
-            <Box 
-                className='ceiling-space'
-                display={{base: 'block', lg: 'none'}}
-                pt={{base: '20vw', lgTablet: '5vw', lg: 0}}
-            />
+const FilterButton = ({ children }) => {
+    return (
+        <Button
+            role="group"
+            bg="transparent" 
+            textTransform="capitalize" fontWeight="400"
+            fontSize={{base: 'md', lgDesktop: '20px', xlDesktop: 'xl'}}
+            transition="transform ease-in 300ms"
+            justify="center" align="center" border="1px" borderColor="colorDark"
+            w="max-content" mx="auto" display="flex"
+            py={{base: 7, mdDesktop: 9}} px={{base: 8, tablet:12}}
+            mt={{base: '5rem', lgTablet:'7.5rem', lgDesktop:'wrap2Md'}}
+            borderRadius="100px"
+            _hover={{
+                backgroundColor: 'colorBlue',
+                color: "textLight",
+                borderColor: "colorBlue"
+            }}
+        >
+            <Flex
+                justify="center" direction="column"
+                overflow="hidden" height="20px"
+            >
+                <Flex 
+                    height="100%"
+                    style={{transformStyle: "preserve-3d"}}
+                    transition="transform 300ms ease" 
+                    transform="translateY(50%)"
+                    align="center"
+                    _groupHover={{      
+                        transform: "translateY(-50%)"                                  
+                    }}
+                >
+                    {children}
+                </Flex>
+                <Flex
+                    height="100%"
+                    style={{transformStyle: "preserve-3d"}}
+                    transition="transform 300ms ease" 
+                    transform="translateY(50%)"
+                    align="center"
+                    _groupHover={{
+                        transform:"translateY(-50%)"
+                    }}
+                >
+                    {children}
+                </Flex>
+            </Flex>
+        </Button>
+    )
+}
 
-            <SectionHeader>Events</SectionHeader>
-            <Box maxW="1700px"> 
-                <Title>
-                    Find all the latest and upcoming club events
-                </Title>
-            </Box>
-        </ResponsiveSection>
-    </Layout>
-  )
+const Events = () => {
+
+    const eventsFilters = ['Day', 'Week', 'Month'];
+    return (
+        <Layout>
+            <ResponsiveSection>
+                <Box 
+                    className='ceiling-space'
+                    display={{base: 'block', lg: 'none'}}
+                    pt={{base: '20vw', lgTablet: '5vw', lg: 0}}
+                />
+
+                <SectionHeader>Events</SectionHeader>
+                <Box maxW="1700px"> 
+                    <Title>
+                        Find all the latest and upcoming club events
+                    </Title>
+                </Box>
+
+                <Flex gap={6} width="max-content">
+                    {
+                        eventsFilters.map(eventsFilters => {
+                            return (
+                                <FilterButton key={eventsFilters}>{eventsFilters}</FilterButton>
+                            )
+                        })
+                    }
+                
+                </Flex>
+            </ResponsiveSection>
+        </Layout>
+    )
 }
 
 export default Events
