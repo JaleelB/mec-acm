@@ -1,13 +1,14 @@
 import { Box, Button, Flex, Stack } from '@chakra-ui/react'
-import React from 'react'
+import React, {useState} from 'react'
 import { ResponsiveSection, SectionHeader, Title } from '../components'
 import { Layout } from '../layout'
 
-const FilterButton = ({ children }) => {
+const FilterButton = ({ children, active, func }) => {
     return (
         <Button
-            role="group"
-            bg="transparent" 
+            role="group" onClick={func}
+            bg={active ? "colorDark" : "transparent"} 
+            color={active ? "textLight" : "colorDark"} 
             textTransform="capitalize" fontWeight="400"
             fontSize={{base: 'md', lgDesktop: '20px', xlDesktop: 'xl'}}
             transition="transform ease-in 300ms"
@@ -58,6 +59,10 @@ const FilterButton = ({ children }) => {
 const Events = () => {
 
     const eventsFilters = ['Day', 'Week', 'Month'];
+    const [selectedTab, setSelectedTab] = useState(eventsFilters[0]);
+
+    const filterEventByFilter = (eventsFilter) =>  setSelectedTab(eventsFilter);
+
     return (
         <Layout>
             <ResponsiveSection>
@@ -74,11 +79,21 @@ const Events = () => {
                     </Title>
                 </Box>
 
-                <Flex gap={6} width="max-content">
+                <Flex 
+                    gap={{base: 3, md:6}} width="max-content" 
+                    mb={{base: '3rem', lgTablet:'5.5rem', lgDesktop:'wrapMd'}}
+                    mt={{base: '-2rem', lgTablet:'-3rem', lgDesktop:"-4rem"}}
+                >
                     {
-                        eventsFilters.map(eventsFilters => {
+                        eventsFilters.map(eventsFilter => {
                             return (
-                                <FilterButton key={eventsFilters}>{eventsFilters}</FilterButton>
+                                <FilterButton 
+                                    key={eventsFilters}
+                                    func={() => filterEventByFilter(eventsFilter)}
+                                    active={eventsFilter === selectedTab}
+                                >
+                                    {eventsFilter}
+                                </FilterButton>
                             )
                         })
                     }
