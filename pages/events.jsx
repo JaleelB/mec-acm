@@ -1,6 +1,6 @@
-import { Box, Button, Flex, Stack } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, Stack } from '@chakra-ui/react'
 import React, {useState} from 'react'
-import { ResponsiveSection, SectionHeader, Title } from '../components'
+import { ResponsiveSection, SectionHeader, Subtitle, Title } from '../components'
 import { Layout } from '../layout'
 
 const FilterButton = ({ children, active, func }) => {
@@ -11,7 +11,7 @@ const FilterButton = ({ children, active, func }) => {
             color={active ? "textLight" : "colorDark"} 
             textTransform="capitalize" fontWeight="400"
             fontSize={{base: 'md', lgDesktop: '20px', xlDesktop: 'xl'}}
-            transition="transform ease-in 300ms"
+            transition="all ease-in 300ms"
             justify="center" align="center" border="1px" borderColor="colorDark"
             w="max-content" mx="auto" display="flex"
             py={{base: 7, mdDesktop: 9}} px={{base: 8, tablet:12}}
@@ -60,8 +60,34 @@ const Events = () => {
 
     const eventsFilters = ['Day', 'Week', 'Month'];
     const [selectedTab, setSelectedTab] = useState(eventsFilters[0]);
+    const dates = new Map([
+        ["Day", getDay()],
+        ["Week", getWeek()],
+        ["Month", getMonth()]
+    ])
+
+    function getDay(){
+        return `${new Date().toDateString()}`
+    }
+
+    function getWeek(){
+        const date = new Date; 
+        const lastday = date.getDate() - (date.getDay() - 1) + 6;
+        const formattedLastDay = new Date(date.setDate(lastday)).toUTCString().split(' ').slice(0, 4).join(' ')
+
+        return `${new Date().toDateString()} - ${formattedLastDay}`;
+    };
+
+    function getMonth(){
+        const date = new Date; 
+        const month = date.toLocaleString('default', { month: 'long', });
+        return `${month} ${date.getFullYear()}`
+    }
+    
 
     const filterEventByFilter = (eventsFilter) =>  setSelectedTab(eventsFilter);
+
+   
 
     return (
         <Layout>
@@ -85,10 +111,10 @@ const Events = () => {
                     mt={{base: '-2rem', lgTablet:'-3rem', lgDesktop:"-4rem"}}
                 >
                     {
-                        eventsFilters.map(eventsFilter => {
+                        eventsFilters.map((eventsFilter, index) => {
                             return (
                                 <FilterButton 
-                                    key={eventsFilters}
+                                    key={index}
                                     func={() => filterEventByFilter(eventsFilter)}
                                     active={eventsFilter === selectedTab}
                                 >
@@ -99,6 +125,17 @@ const Events = () => {
                     }
                 
                 </Flex>
+                
+                <Box mt={{base: '5rem', lgTablet:'7.5rem', lgDesktop:'12rem'}}>
+                    <SectionHeader>
+                        {
+                            selectedTab === "Day" ? 'Today':
+                            selectedTab === "Week" ? 'This Week':
+                            'This Month'
+                        }
+                    </SectionHeader>
+                    <Subtitle mt={{base: '-1rem'}}>{dates.get(selectedTab)}</Subtitle>
+                </Box>
             </ResponsiveSection>
         </Layout>
     )
