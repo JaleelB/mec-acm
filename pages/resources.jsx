@@ -31,10 +31,6 @@ const Resources = ({ resources }) => {
 
     const filterResources = (filter) =>  setResourceData(filter === "All" ? [...resources] : resources.filter( data => data.attributes.Type === filter));
 
-    useEffect(() => {
-        console.log(resourceData);
-    },[resourceData])
-
     return (
         <Layout>
             <HeroAnimationWrapper>
