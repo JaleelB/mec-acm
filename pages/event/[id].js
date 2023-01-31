@@ -7,7 +7,7 @@ export async function getStaticPaths(){
     const events = await res.data.data;
 
     const paths = events.map( event => {
-        params: { slug: event.attributes.Slug }
+        params: { id: event.attributes.Slug }
     })
 
     return {
@@ -18,8 +18,15 @@ export async function getStaticPaths(){
 
 export async function getStaticProps({ params }) {
 
-  const { slug } = params;
-  console.log(slug)
+  const { id } = params;
+  
+  const res = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/events/${id}`)
+  const data = await res.data.data;
+  const event = data[0]
+
+  return {
+    props: { event }
+  }
 
   
 };

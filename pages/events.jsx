@@ -88,6 +88,8 @@ const Events = ({ events }) => {
 
     const filterEventByFilter = (eventsFilter) =>  setSelectedTab(eventsFilter);
 
+    // console.log("Events data: ", events)
+
     const [eventData, setEventData] = useState(() => { return [...events] })
 
     return (
