@@ -1,4 +1,5 @@
 import { Box, Button, Flex, Heading, Stack } from '@chakra-ui/react'
+import axios from 'axios'
 import React, {useState} from 'react'
 import { ResponsiveSection, SectionHeader, Subtitle, Title } from '../components'
 import { Layout } from '../layout'
@@ -56,7 +57,7 @@ const FilterButton = ({ children, active, func }) => {
     )
 }
 
-const Events = () => {
+const Events = ({ events }) => {
 
     const eventsFilters = ['Day', 'Week', 'Month'];
     const [selectedTab, setSelectedTab] = useState(eventsFilters[0]);
@@ -87,7 +88,7 @@ const Events = () => {
 
     const filterEventByFilter = (eventsFilter) =>  setSelectedTab(eventsFilter);
 
-   
+   console.log(events);
 
     return (
         <Layout>
@@ -142,3 +143,16 @@ const Events = () => {
 }
 
 export default Events
+
+export async function getStaticProps() {
+
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/events`)
+    const eventsList = await res.data.data;
+
+    return {
+        props: {
+            events: eventsList
+        },
+        
+    };
+};
