@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react'
 
 //tell next js how many pages there are
