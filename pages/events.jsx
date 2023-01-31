@@ -1,4 +1,4 @@
-import { Box, Button, Flex, GridItem, Heading, Stack } from '@chakra-ui/react'
+import { Box, Button, Flex, GridItem } from '@chakra-ui/react'
 import axios from 'axios'
 import React, {useState} from 'react'
 import { Event, ResponsiveSection, SectionHeader, Subtitle, TabContent, Title } from '../components'
@@ -89,8 +89,6 @@ const Events = ({ events }) => {
     const filterEventByFilter = (eventsFilter) =>  setSelectedTab(eventsFilter);
 
     const [eventData, setEventData] = useState(() => { return [...events] })
-
-    console.log("E Data: ", eventData)
 
     return (
         <Layout>
