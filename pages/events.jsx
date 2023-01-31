@@ -144,6 +144,23 @@ const Events = ({ events }) => {
 
 export default Events
 
+
+// tell next js how many pages there are
+export async function getStaticPaths(){
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/events`)
+    const events = await res.data.data;
+
+    const paths = events.map( event => {
+        params: { slug: event.Slug }
+    })
+
+    return {
+        paths,
+        fallback: false,
+    }
+}
+
+// get data for each individual page
 export async function getStaticProps() {
 
     const res = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/api/events`)
