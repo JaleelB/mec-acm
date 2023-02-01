@@ -1,7 +1,7 @@
 import { Box, Button, Flex, GridItem } from '@chakra-ui/react'
 import axios from 'axios'
 import React, {useState} from 'react'
-import { ResponsiveSection, SectionHeader, Subtitle, Title } from '../components'
+import { EventCard, ResponsiveSection, SectionHeader, Subtitle, TabContent, Title } from '../components'
 import { Layout } from '../layout'
 
 const FilterButton = ({ children, active, func }) => {
@@ -141,7 +141,7 @@ const Events = ({ events }) => {
                 </Box>
 
 
-                {/* <TabContent>
+                <TabContent>
                     {
                         eventData.map((event, index) => {
                             return (
@@ -155,7 +155,7 @@ const Events = ({ events }) => {
                         })
                         
                     }   
-                </TabContent> */}
+                </TabContent>
 
             </ResponsiveSection>
         </Layout>
