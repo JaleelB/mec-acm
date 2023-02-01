@@ -1,7 +1,7 @@
 import { Box, Button, Flex, GridItem } from '@chakra-ui/react'
 import axios from 'axios'
 import React, {useState} from 'react'
-import { Event, ResponsiveSection, SectionHeader, Subtitle, TabContent, Title } from '../components'
+import { EventCard, ResponsiveSection, SectionHeader, Subtitle, TabContent, Title } from '../components'
 import { Layout } from '../layout'
 
 const FilterButton = ({ children, active, func }) => {
@@ -148,7 +148,7 @@ const Events = ({ events }) => {
                                 <GridItem
                                     key={event?.id || index}
                                 >
-                                    <Event event={event} index={index}/>
+                                    <EventCard event={event} index={index}/>
                 
                                 </GridItem>
                             )
