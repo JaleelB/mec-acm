@@ -31,10 +31,10 @@ export async function getStaticProps({ params }) {
   
 };
 
-const Event = ({ event }) => {
+const EventPage = ({ event }) => {
   return (
     <div>{event.attributes.Name}</div>
   )
 }
 
-export default Event
+export default EventPage
