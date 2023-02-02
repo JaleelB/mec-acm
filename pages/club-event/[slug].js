@@ -1,10 +1,11 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Button, Flex, Text } from '@chakra-ui/react';
 import axios from 'axios';
 import Image from 'next/image';
 import React from 'react'
-import { ResponsiveSection, SectionHeader, Title } from '../../components';
+import { ResponsiveSection, SecondaryButton, SectionHeader, Title } from '../../components';
 import { Layout } from '../../layout';
 import banner from '../../assets/club-event.jpg'
+import Link from 'next/link';
 
 //tell next js how many pages there are
 export async function getStaticPaths(){
@@ -55,7 +56,7 @@ const EventPage = ({ event }) => {
 
         <Box 
           as="figure" w="100%" height="100%"
-          mt={{base: '2rem', md: "3rem"}}
+          my={{base: '2rem', md: "3rem"}}
            pos="relative"
         >
           <Image
@@ -66,6 +67,34 @@ const EventPage = ({ event }) => {
               maxHeight: "1200px", aspectRatio: "2/1"
             }}
           />
+        </Box>
+
+        <Flex 
+          mb={{base: '2rem', md: "3rem"}} gap="3rem" 
+          justify="space-between" direction={{base: "column", md: "row"}}
+        >
+
+          <Flex justify={{base: "space-between", md: "normal"}} gap={{base: 0, md: "3rem"}}>
+            <Box>
+              <Text fontWeight={600}>Date</Text>
+              <Text>{event.attributes.Date}</Text>
+            </Box>
+            <Box>
+              <Text fontWeight={600}>Event Type</Text>
+              <Text>{event.attributes.Type}</Text>
+            </Box>
+          </Flex>
+            
+          <SecondaryButton path={event.attributes.Link || "/events"} text="join the event"/>
+            
+        </Flex>
+
+        <Box 
+            pt={{base: '2rem', md: "3rem"}}
+            w={{base: "100%", md: "75%", smDesktop: "50%"}}
+        >
+          <Text fontWeight={600}>Agenda</Text>
+          <Text>{event.attributes.Description}</Text>
         </Box>
 
 
