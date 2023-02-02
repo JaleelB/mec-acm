@@ -1,8 +1,9 @@
-import { Box, Button, Flex, GridItem, Heading, Stack } from '@chakra-ui/react'
+import { Box, Button, Flex, GridItem } from '@chakra-ui/react'
 import axios from 'axios'
 import React, {useState} from 'react'
-import { Event, ResponsiveSection, SectionHeader, Subtitle, TabContent, Title } from '../components'
+import { ResponsiveSection, SectionHeader, Subtitle, TabContent, Title } from '../components'
 import { Layout } from '../layout'
+import EventCard from '../components/EventCard'
 
 const FilterButton = ({ children, active, func }) => {
     return (
@@ -88,9 +89,9 @@ const Events = ({ events }) => {
 
     const filterEventByFilter = (eventsFilter) =>  setSelectedTab(eventsFilter);
 
-    const [eventData, setEventData] = useState(() => { return [...events] })
+    // console.log("Events data: ", events)
 
-    console.log("E Data: ", eventData)
+    const [eventData, setEventData] = useState(() => { return [...events] })
 
     return (
         <Layout>
@@ -148,7 +149,7 @@ const Events = ({ events }) => {
                                 <GridItem
                                     key={event?.id || index}
                                 >
-                                    <Event event={event} index={index}/>
+                                    <EventCard event={event} index={index}/>
                 
                                 </GridItem>
                             )
