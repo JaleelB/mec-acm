@@ -1,8 +1,10 @@
 import { Box } from '@chakra-ui/react';
 import axios from 'axios';
+import Image from 'next/image';
 import React from 'react'
 import { ResponsiveSection, SectionHeader, Title } from '../../components';
 import { Layout } from '../../layout';
+import banner from '../../assets/club-event.jpg'
 
 //tell next js how many pages there are
 export async function getStaticPaths(){
@@ -44,8 +46,27 @@ const EventPage = ({ event }) => {
               display={{base: 'block', lg: 'none'}}
               pt={{base: '20vw', lgTablet: '5vw', lg: 0}}
           />
-        <SectionHeader>event</SectionHeader>
-        <Title>{event.attributes.Name}</Title>
+
+        <Box>
+          <SectionHeader>event</SectionHeader>
+          <Title>{event.attributes.Name}</Title>
+        </Box>
+
+
+        <Box 
+          as="figure" w="100%" height="100%"
+          mt={{base: '2rem', md: "3rem"}}
+           pos="relative"
+        >
+          <Image
+            src={banner}
+            alt='Event banner'
+            style={{ 
+              inlineSize: "100%", objectFit: "cover", 
+              maxHeight: "1200px", aspectRatio: "2/1"
+            }}
+          />
+        </Box>
 
 
       </ResponsiveSection>
