@@ -40,7 +40,7 @@ const EventCard = ({event, index}) => {
             </Flex>
 
             <Grid w="max-content" alignSelf="flex-start" mt={{base: '1rem', md:"2rem", lgDesktop:"3rem", xlDesktop: "4rem"}}>        
-                <Link href={`/event/${event?.attributes.Slug}`}>
+                <Link href={`/club-event/${event?.attributes.Slug}`}>
                     <Box 
                         border="1px" px={4} py={{base: 3, lgDesktop: 2}}
                         borderColor="colorDark" borderRadius="100%"
