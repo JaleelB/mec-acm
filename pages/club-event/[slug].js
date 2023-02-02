@@ -1,5 +1,8 @@
+import { Box } from '@chakra-ui/react';
 import axios from 'axios';
 import React from 'react'
+import { ResponsiveSection, SectionHeader, Title } from '../../components';
+import { Layout } from '../../layout';
 
 //tell next js how many pages there are
 export async function getStaticPaths(){
@@ -33,7 +36,20 @@ export async function getStaticProps({ params }) {
 
 const EventPage = ({ event }) => {
   return (
-    <div>{event.attributes.Name}</div>
+    <Layout>
+       <ResponsiveSection>
+
+          <Box
+              className='ceiling-space'
+              display={{base: 'block', lg: 'none'}}
+              pt={{base: '20vw', lgTablet: '5vw', lg: 0}}
+          />
+        <SectionHeader>event</SectionHeader>
+        <Title>{event.attributes.Name}</Title>
+
+
+      </ResponsiveSection>
+    </Layout>
   )
 }
 
