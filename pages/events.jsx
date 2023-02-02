@@ -1,9 +1,8 @@
 import { Box, Button, Flex, GridItem } from '@chakra-ui/react'
 import axios from 'axios'
 import React, {useState} from 'react'
-import { ResponsiveSection, SectionHeader, Subtitle, TabContent, Title } from '../components'
+import { EventCard, ResponsiveSection, SectionHeader, Subtitle, TabContent, Title } from '../components'
 import { Layout } from '../layout'
-import { EventCard } from '../components/EventCard'
 
 const FilterButton = ({ children, active, func }) => {
     return (
