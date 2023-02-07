@@ -28,6 +28,7 @@ const EventCard = ({event, index}) => {
                 <Box
                     border="1px" px={6} py={2}
                     borderColor="colorDark" borderRadius="100px"
+                    h="max-content"
                 >
                     {event.attributes.Type || "Programming"}
                 </Box>

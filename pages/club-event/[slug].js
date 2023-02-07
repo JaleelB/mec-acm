@@ -6,6 +6,7 @@ import { ResponsiveSection, SecondaryButton, SectionHeader, Title } from '../../
 import { Layout } from '../../layout';
 import banner from '../../assets/club-event.jpg'
 import Link from 'next/link';
+import { convertDateFormat } from '../../utils/date';
 
 //tell next js how many pages there are
 export async function getStaticPaths(){
@@ -77,7 +78,7 @@ const EventPage = ({ event }) => {
           <Flex justify={{base: "space-between", md: "normal"}} gap={{base: 0, md: "3rem"}}>
             <Box>
               <Text fontWeight={600}>Date</Text>
-              <Text>{event.attributes.Date}</Text>
+              <Text>{convertDateFormat(event.attributes.Date)}</Text>
             </Box>
             <Box>
               <Text fontWeight={600}>Event Type</Text>
