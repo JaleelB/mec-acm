@@ -4,6 +4,7 @@ import React, {useState} from 'react'
 import { ResponsiveSection, SectionHeader, Subtitle, TabContent, Title } from '../components'
 import { Layout } from '../layout'
 import EventCard from '../components/EventCard'
+import { convertDateFormat, getDay, getMonth, getWeek } from '../utils/date'
 
 const FilterButton = ({ children, active, func }) => {
     return (
@@ -68,28 +69,9 @@ const Events = ({ events }) => {
         ["Month", getMonth()]
     ])
 
-    function getDay(){
-        return `${new Date().toDateString()}`
-    }
-
-    function getWeek(){
-        const date = new Date; 
-        const lastday = date.getDate() - (date.getDay() - 1) + 6;
-        const formattedLastDay = new Date(date.setDate(lastday)).toUTCString().split(' ').slice(0, 4).join(' ')
-
-        return `${new Date().toDateString()} - ${formattedLastDay}`;
-    };
-
-    function getMonth(){
-        const date = new Date; 
-        const month = date.toLocaleString('default', { month: 'long', });
-        return `${month} ${date.getFullYear()}`
-    }
-    
-
     const filterEventByFilter = (eventsFilter) =>  setSelectedTab(eventsFilter);
 
-    // console.log("Events data: ", events)
+    // console.log("Today's date: ", convertDateFormat('2023-02-06'))
 
     const [eventData, setEventData] = useState(() => { return [...events] })
 
@@ -111,7 +93,7 @@ const Events = ({ events }) => {
 
                 <Flex 
                     gap={{base: 3, md:6}} width="max-content" 
-                    mb={{base: '3rem', lgTablet:'5.5rem', lgDesktop:'wrapMd'}}
+                    mb={{base: '3rem', lgTablet:'5.5rem', xlDesktop:'wrapMd'}}
                     mt={{base: '-2rem', lgTablet:'-3rem', lgDesktop:"-4rem"}}
                 >
                     {
@@ -130,7 +112,7 @@ const Events = ({ events }) => {
                 
                 </Flex>
                 
-                <Box mt={{base: '5rem', lgTablet:'7.5rem', lgDesktop:'12rem'}}>
+                <Box mt={{base: '5rem', lgTablet:'7.5rem', lgDesktop:'7rem'}}>
                     <SectionHeader>
                         {
                             selectedTab === "Day" ? 'Today':
