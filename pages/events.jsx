@@ -1,7 +1,7 @@
 import { Box, Button, Flex, GridItem } from '@chakra-ui/react'
 import axios from 'axios'
 import React, {useState} from 'react'
-import { ResponsiveSection, SectionHeader, Subtitle, TabContent, Title } from '../components'
+import { HeroAnimationWrapper, ResponsiveSection, SectionHeader, Subtitle, TabContent, Title } from '../components'
 import { Layout } from '../layout'
 import EventCard from '../components/EventCard'
 import { convertDateFormat, getDay, getMonth, getWeek } from '../utils/date'
@@ -84,13 +84,15 @@ const Events = ({ events }) => {
                     pt={{base: '20vw', lgTablet: '5vw', lg: 0}}
                 />
 
-                <SectionHeader>Events</SectionHeader>
-                <Box maxW="1700px"> 
-                    <Title>
-                        Find all the latest and upcoming club events
-                    </Title>
-                </Box>
-
+                
+                <HeroAnimationWrapper>
+                    <SectionHeader>Events</SectionHeader>
+                    <Box maxW="1700px"> 
+                        <Title>
+                            Find all the latest and upcoming club events
+                        </Title>
+                    </Box>
+                </HeroAnimationWrapper>
                 <Flex 
                     gap={{base: 3, md:6}} width="max-content" 
                     mb={{base: '3rem', lgTablet:'5.5rem', xlDesktop:'wrapMd'}}
