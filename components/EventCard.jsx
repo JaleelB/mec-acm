@@ -3,6 +3,7 @@ import { Box, Flex, Grid, Heading, Text } from '@chakra-ui/react'
 import Link from 'next/link'
 import React from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import { convertDateFormat } from '../utils/date'
 
 const EventCard = ({event, index}) => {
 
@@ -23,7 +24,7 @@ const EventCard = ({event, index}) => {
         >
             <Flex justify="space-between" gap={{base: 12, smTablet: 0, md: 8, mdDesktop: 0}}>
                 
-                <Text>{new Date(event?.attributes.Date).toUTCString().split(' ').slice(0, 4).join(' ')}</Text>
+                <Text>{convertDateFormat(new Date(event?.attributes.Date).toUTCString().split(' ').slice(0, 4).join(' '))}</Text>
 
                 <Box
                     border="1px" px={6} py={2}
