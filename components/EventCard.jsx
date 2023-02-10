@@ -24,7 +24,7 @@ const EventCard = ({event, index}) => {
         >
             <Flex justify="space-between" gap={{base: 12, smTablet: 0, md: 8, mdDesktop: 0}}>
                 
-                <Text>{convertDateFormat(new Date(event?.attributes.Date).toUTCString().split(' ').slice(0, 4).join(' '))}</Text>
+                <Text>{convertDateFormat(event?.attributes.Date)}</Text>
 
                 <Box
                     border="1px" px={6} py={2}
