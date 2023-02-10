@@ -1,10 +1,10 @@
-import { Box, Button, Flex, GridItem } from '@chakra-ui/react'
+import { Box, Button, Flex, GridItem, Text } from '@chakra-ui/react'
 import axios from 'axios'
 import React, {useState} from 'react'
 import { HeroAnimationWrapper, ResponsiveSection, SectionHeader, Subtitle, TabContent, Title } from '../components'
 import { Layout } from '../layout'
 import EventCard from '../components/EventCard'
-import { getDay, getMonth, getWeek } from '../utils/date'
+import { convertDateFormat, filterByDay, getDay, getMonth, getWeek } from '../utils/date'
 import { motion } from "framer-motion"
 
 const FilterButton = ({ children, active, func }) => {
@@ -69,12 +69,12 @@ const Events = ({ events }) => {
         ["Week", getWeek()],
         ["Month", getMonth()]
     ])
-
+    const [eventData, setEventData] = useState(() => { return filterByDay([...events]) })
     const filterEventByFilter = (eventsFilter) =>  setSelectedTab(eventsFilter);
 
-    // console.log("Today's date: ", convertDateFormat('2023-02-06'))
+    console.log("Event is today: ", filterByDay(eventData))
 
-    const [eventData, setEventData] = useState(() => { return [...events] })
+    
 
     return (
         <Layout>
@@ -156,21 +156,36 @@ const Events = ({ events }) => {
                         delay: 2.1,
                     }}
                 >
-                    <TabContent>
-                        {
-                            eventData.map((event, index) => {
-                                return (
-                                    <GridItem
-                                        key={event?.id || index}
-                                    >
-                                        <EventCard event={event} index={index}/>
-                    
-                                    </GridItem>
-                                )
-                            })
+                    {
+                        eventData.length == 0 ?  
+                            <Text
+                                textAlign="center"
+                                mt={{base: '5rem', lgTablet:'7.5rem', xlDesktop:'wrap2Md'}}
+                            >
+                                {`There are no events ${
+                                    selectedTab === "Day" ? 'today':
+                                    selectedTab === "Week" ? 'this week':
+                                    'this month'
+                                }`}
+                            </Text> :
+                        (
+                            <TabContent>
+                                {
+                                    eventData.map((event, index) => {
+                                        return (
+                                            <GridItem
+                                                key={event?.id || index}
+                                            >
+                                                <EventCard event={event} index={index}/>
                             
-                        }   
-                    </TabContent>
+                                            </GridItem>
+                                        )
+                                    })
+                                    
+                                }   
+                            </TabContent>
+                        )
+                    }
                 </motion.div>
 
             </ResponsiveSection>

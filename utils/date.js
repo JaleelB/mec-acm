@@ -4,10 +4,15 @@ export function getDay(){
 
 export function getWeek(){
     const date = new Date; 
+    const firstday = new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay()).toUTCString().split(' ').slice(0, 4).join(' ');
     const lastday = date.getDate() - (date.getDay() - 1) + 6;
     const formattedLastDay = new Date(date.setDate(lastday)).toUTCString().split(' ').slice(0, 4).join(' ')
-
-    return `${convertDateFormat(new Date().toDateString())} - ${convertDateFormat(formattedLastDay)}`;
+    
+    return {
+      firstDay: convertDateFormat(firstday),
+      weekString: `${convertDateFormat(firstday)} - ${convertDateFormat(formattedLastDay)}`,
+      lastDay: convertDateFormat(formattedLastDay)
+    };
 };
 
 export function getMonth(){
@@ -32,6 +37,8 @@ export function convertDateFormat(dateString) {
       return 'Invalid input. Input must be a string.';
     }
 
+    let convertedDateString = new Date(dateString).toUTCString().split(' ').slice(0, 4).join(' ')
+
     const dateFormats = [
       "dd-mm-yy",
       "yy-mm-dd",
@@ -49,7 +56,7 @@ export function convertDateFormat(dateString) {
     // loop through all possible date formats
     for (const format of dateFormats) {
       // try to parse the date string using each format
-      const parsedDate = Date.parse(dateString, format);
+      const parsedDate = Date.parse(convertedDateString, format);
   
       // if the parsing is successful, store the result and break the loop
       if (!isNaN(parsedDate)) {
@@ -69,8 +76,35 @@ export function convertDateFormat(dateString) {
   
     // format the date as "mm/dd/yy"
     const formattedDate = `${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getDate().toString().padStart(2, '0')}/${date.getFullYear().toString().slice(-2)}`;
-  
+
     // return the formatted date
     return formattedDate;
-  }
+}
+
+export function filterByDay(group){
+  if (group.length !== 0) return []
+
+  return group.filter(groupItem => {
+  return compareDates(getDay(), convertDateFormat(groupItem.attributes.Date))
+  })
+  
+}
+
+export function filterByWeek(group){
+
+  if (group.length !== 0) return []
+
+  const { firstDay, lastDay } = getWeek()
+  const currentWeekFirstDay = new Date(firstDay);
+  const currentWeekLastDay = new Date(lastDay);
+  
+  return group.filter(groupItem => {
+  
+    let inputDate = new Date(groupItem.attributes.Date);
+
+    return inputDate >= currentWeekFirstDay && inputDate <= currentWeekLastDay;
+
+  })
+  
+}
   
