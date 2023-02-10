@@ -1,5 +1,4 @@
 export function getDay(){
-    console.log(new Date().toDateString())
     return `${convertDateFormat(new Date().toDateString())}`
 }
 
@@ -7,7 +6,6 @@ export function getWeek(){
     const date = new Date; 
     const lastday = date.getDate() - (date.getDay() - 1) + 6;
     const formattedLastDay = new Date(date.setDate(lastday)).toUTCString().split(' ').slice(0, 4).join(' ')
-    console.log(formattedLastDay)
 
     return `${convertDateFormat(new Date().toDateString())} - ${convertDateFormat(formattedLastDay)}`;
 };
@@ -16,7 +14,7 @@ export function getMonth(){
     const date = new Date();
     const month = date.getMonth() + 1; // Adding 1 because JavaScript's getMonth() method returns 0-based index
     const year = date.getFullYear();
-    return `${month}/${year.toString().slice(-2)}`;
+    return `0${month}/${year.toString().slice(-2)}`;
 }
 
 export function compareDates(date1, date2) {
@@ -33,8 +31,7 @@ export function convertDateFormat(dateString) {
     if (typeof dateString !== 'string') {
       return 'Invalid input. Input must be a string.';
     }
-  
-    // define an array of all possible date formats
+
     const dateFormats = [
       "dd-mm-yy",
       "yy-mm-dd",

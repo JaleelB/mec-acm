@@ -1,10 +1,11 @@
 import { Box, Button, Flex, GridItem } from '@chakra-ui/react'
 import axios from 'axios'
 import React, {useState} from 'react'
-import { ResponsiveSection, SectionHeader, Subtitle, TabContent, Title } from '../components'
+import { HeroAnimationWrapper, ResponsiveSection, SectionHeader, Subtitle, TabContent, Title } from '../components'
 import { Layout } from '../layout'
 import EventCard from '../components/EventCard'
-import { convertDateFormat, getDay, getMonth, getWeek } from '../utils/date'
+import { getDay, getMonth, getWeek } from '../utils/date'
+import { motion } from "framer-motion"
 
 const FilterButton = ({ children, active, func }) => {
     return (
@@ -84,61 +85,93 @@ const Events = ({ events }) => {
                     pt={{base: '20vw', lgTablet: '5vw', lg: 0}}
                 />
 
-                <SectionHeader>Events</SectionHeader>
-                <Box maxW="1700px"> 
-                    <Title>
-                        Find all the latest and upcoming club events
-                    </Title>
-                </Box>
+                
+                <HeroAnimationWrapper>
+                    <SectionHeader>Events</SectionHeader>
+                    <Box maxW="1700px"> 
+                        <Title>
+                            Find all the latest and upcoming club events
+                        </Title>
+                    </Box>
+                </HeroAnimationWrapper>
 
-                <Flex 
-                    gap={{base: 3, md:6}} width="max-content" 
-                    mb={{base: '3rem', lgTablet:'5.5rem', xlDesktop:'wrapMd'}}
-                    mt={{base: '-2rem', lgTablet:'-3rem', lgDesktop:"-4rem"}}
+                <motion.div
+                    initial={{ opacity: 0, y: 90 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                        type: "easeInOut",
+                        duration: .9,
+                        delay: 1.2,
+                    }}
                 >
-                    {
-                        eventsFilters.map((eventsFilter, index) => {
-                            return (
-                                <FilterButton 
-                                    key={index}
-                                    func={() => filterEventByFilter(eventsFilter)}
-                                    active={eventsFilter === selectedTab}
-                                >
-                                    {eventsFilter}
-                                </FilterButton>
-                            )
-                        })
-                    }
-                
-                </Flex>
-                
-                <Box mt={{base: '5rem', lgTablet:'7.5rem', lgDesktop:'7rem'}}>
-                    <SectionHeader>
+                    <Flex 
+                        gap={{base: 3, md:6}} width="max-content" 
+                        mb={{base: '3rem', lgTablet:'5.5rem', xlDesktop:'wrapMd'}}
+                        mt={{base: '-2rem', lgTablet:'-3rem', lgDesktop:"-4rem"}}
+                    >
                         {
-                            selectedTab === "Day" ? 'Today':
-                            selectedTab === "Week" ? 'This Week':
-                            'This Month'
+                            eventsFilters.map((eventsFilter, index) => {
+                                return (
+                                    <FilterButton 
+                                        key={index}
+                                        func={() => filterEventByFilter(eventsFilter)}
+                                        active={eventsFilter === selectedTab}
+                                    >
+                                        {eventsFilter}
+                                    </FilterButton>
+                                )
+                            })
                         }
-                    </SectionHeader>
-                    <Subtitle mt={{base: '-1rem'}}>{dates.get(selectedTab)}</Subtitle>
-                </Box>
+                    
+                    </Flex>
+                </motion.div>
 
+                <motion.div
+                    initial={{ opacity: 0, y: 90 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                        type: "easeInOut",
+                        duration: .9,
+                        delay: 1.7,
+                    }}
+                >
+                    <Box mt={{base: '5rem', lgTablet:'7.5rem', lgDesktop:'7rem'}}>
+                        <SectionHeader>
+                            {
+                                selectedTab === "Day" ? 'Today':
+                                selectedTab === "Week" ? 'This Week':
+                                'This Month'
+                            }
+                        </SectionHeader>
+                        <Subtitle mt={{base: '-1rem'}}>{dates.get(selectedTab)}</Subtitle>
+                    </Box>
+                </motion.div>
 
-                <TabContent>
-                    {
-                        eventData.map((event, index) => {
-                            return (
-                                <GridItem
-                                    key={event?.id || index}
-                                >
-                                    <EventCard event={event} index={index}/>
-                
-                                </GridItem>
-                            )
-                        })
-                        
-                    }   
-                </TabContent>
+                <motion.div
+                    initial={{ opacity: 0, y: 90 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                        type: "easeInOut",
+                        duration: .9,
+                        delay: 2.1,
+                    }}
+                >
+                    <TabContent>
+                        {
+                            eventData.map((event, index) => {
+                                return (
+                                    <GridItem
+                                        key={event?.id || index}
+                                    >
+                                        <EventCard event={event} index={index}/>
+                    
+                                    </GridItem>
+                                )
+                            })
+                            
+                        }   
+                    </TabContent>
+                </motion.div>
 
             </ResponsiveSection>
         </Layout>
