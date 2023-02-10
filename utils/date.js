@@ -32,6 +32,8 @@ export function convertDateFormat(dateString) {
       return 'Invalid input. Input must be a string.';
     }
 
+    let convertedDateString = new Date(dateString).toUTCString().split(' ').slice(0, 4).join(' ')
+
     const dateFormats = [
       "dd-mm-yy",
       "yy-mm-dd",
@@ -49,7 +51,7 @@ export function convertDateFormat(dateString) {
     // loop through all possible date formats
     for (const format of dateFormats) {
       // try to parse the date string using each format
-      const parsedDate = Date.parse(dateString, format);
+      const parsedDate = Date.parse(convertedDateString, format);
   
       // if the parsing is successful, store the result and break the loop
       if (!isNaN(parsedDate)) {
@@ -69,8 +71,18 @@ export function convertDateFormat(dateString) {
   
     // format the date as "mm/dd/yy"
     const formattedDate = `${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getDate().toString().padStart(2, '0')}/${date.getFullYear().toString().slice(-2)}`;
-  
+    
+    console.log(foundFormat)
     // return the formatted date
     return formattedDate;
-  }
+}
+
+export function filterByDay(group){
+  return group.filter(groupItem => {
+    // return compareDates(getDay(), groupItem.attributes.Date)
+    console.log(convertDateFormat(groupItem.attributes.Date))
+    return compareDates('02/19/23', convertDateFormat(groupItem.attributes.Date))
+  })
+  
+}
   
